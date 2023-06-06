@@ -1,0 +1,25 @@
+<%#* ARTISTE NAME %>
+<h1><%= @artist.name %></h1>
+<%#* ARTISTE PROFILE PICTURE %>
+<%= image_tag "#{@spotify.images.first["url"]}" %>
+
+<%#* ARTISTE SPOTIFY PAGE %>
+<a href="<%= @spotify.external_urls["spotify"] %>">More info</a>
+
+<%#* ARTISTE MUSIC TYPE %>
+<p><%=  @spotify.genres %></p>
+
+<%#* SPOTIFY PLAYER %>
+<div data-track-name="<%= @spotify.top_tracks(:fr).first(5).map { |track| track.name}.join(";") %>"
+data-track-preview="<%= @spotify.top_tracks(:fr).first(5).map { |track| track.preview_url}.join(";") %>"
+data-track-image="<%= @spotify.top_tracks(:fr).first(5).map { |track| track.album.images.first["url"]}.join(";") %>"
+data-controller="spotify-player">
+
+  <%= image_tag "#{@spotify.top_tracks(:fr).first.album.images.first["url"]}", {data: {spotify_player_target: "trackImage"}} %>
+  <h3 data-spotify-player-target="trackName"><%= @spotify.top_tracks(:fr).first.name %></h3>
+
+  <button data-action="click->spotify-player#previous">Previous</button>
+  <button data-action="click->spotify-player#play_pause">Play/Pause</button>
+  <button data-action="click->spotify-player#next">Next</button>
+
+</div>

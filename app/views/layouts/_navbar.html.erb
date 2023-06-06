@@ -1,0 +1,41 @@
+<nav class="nav-container">
+
+  <div class="nav">
+
+    <div class="nav-left">
+      <%= link_to root_path, class: "logo" do %>
+        <p class="first-logo-text">M<span class="second-logo-text">R</span></p>
+      <% end %>
+    </div>
+
+    <% unless current_page?(root_path) %>
+      <div class="nav-center">
+
+      <%= form_with url: festivals_path, method: :get, class: "search-bar-container" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "search-bar-input",
+              placeholder: "Type a keyword"
+          %>
+
+        <button type="submit" class="search-bar-icon">
+          <%= image_tag "" %>
+        </button>
+
+      <% end %>
+
+      </div>
+    <% end %>
+
+    <div class="nav-right">
+      <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn-danger" %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path, class: "btn-secondary" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+
+</nav>
