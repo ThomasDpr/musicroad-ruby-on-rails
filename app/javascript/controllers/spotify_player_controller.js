@@ -3,15 +3,19 @@ import { left } from "@popperjs/core"
 
 // Connects to data-controller="spotify-player"
 export default class extends Controller {
-  static targets = ["trackName", "trackImage"]
+  static targets = ["trackName", "trackImage", "progressBarFill"]
 
   connect() {
     this.index = 0;
     this.playlist = this.element.dataset.trackPreview.split(";");
     this.trackName = this.element.dataset.trackName.split(";");
     this.trackImage = this.element.dataset.trackImage.split(";");
-
     this.audio = new Audio(this.playlist[this.index]);
+
+    setInterval(() => {
+      const percentage = (this.audio.currentTime / this.audio.duration) * 100;
+      this.progressBarFillTarget.style.width = `${percentage}%`;
+    }, 100);
   }
 
   play_pause() {
