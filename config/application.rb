@@ -6,8 +6,6 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 module Musicroad
-  RSpotify::authenticate("940920550aac4c869a762c35d728fae5", "2368043131a24e9399d6a493c0c16f3f")
-
   class Application < Rails::Application
     config.generators do |generate|
       generate.assets false
