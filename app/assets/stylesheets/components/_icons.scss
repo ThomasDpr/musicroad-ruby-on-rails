@@ -1,0 +1,25 @@
+.back-icon{
+  text-decoration: none;
+  color: $main-text-color;
+
+  svg{
+    height: 46px;
+    width: 46px;
+  }
+}
+
+.player-icon{
+  text-decoration: none;
+  color: $main-text-color;
+
+  svg{
+    height: 30px;
+    width: 30px;
+  }
+}
+.spotify-icon{
+  text-decoration: none;
+  fill: $main-text-color;
+  height: 24px;
+  width: 24px;
+}

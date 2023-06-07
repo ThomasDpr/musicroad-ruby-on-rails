@@ -7,5 +7,6 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
     @spotify = RSpotify::Artist.search(@artist.name).first
+    @genres =  @spotify.genres.join(" #")
   end
 end

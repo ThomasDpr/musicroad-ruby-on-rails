@@ -31,3 +31,22 @@ a{
   color: $main-text-color;
   font-size: 100px;
 }
+
+.title-text{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+}
+.tag-text{
+  color: $secondary-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+.track-title{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
