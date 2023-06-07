@@ -1,0 +1,14 @@
+<h1><%= @festival.name %></h1>
+
+<p><%= @festival.location %></p>
+<p><%= @festival.start_date.strftime("%d/%m/%Y") %></p>
+<p><%= @festival.min_price %>€ - <%= @festival.max_price %>€</p>
+<br>
+<p><%= @festival.description %></p>
+
+<%= image_tag image_url(@festival.image), width: 200 %>
+
+<% @festival.artists.each do |artist| %>
+  <h2><%= link_to artist.name, artist_path(artist) %></h2>
+  <%= image_tag image_url(artist.image), width: 200 %>
+<% end %>
