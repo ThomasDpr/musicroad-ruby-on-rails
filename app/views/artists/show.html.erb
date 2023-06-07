@@ -1,3 +1,40 @@
+<%#* ARTISTE NAME %>
 <h1><%= @artist.name %></h1>
+<%#* ARTISTE PROFILE PICTURE %>
+<%= image_tag "#{@spotify.images.first["url"]}" %>
 
-<p><%= @artist.description %></p>
+<%#* ARTISTE SPOTIFY PAGE %>
+<a href="<%= @spotify.external_urls["spotify"] %>">More info</a>
+
+<%#* ARTISTE MUSIC TYPE %>
+<p><%=  @spotify.genres %></p>
+
+<%#* SPOTIFY PLAYER %>
+<div data-track-name="<%= @spotify.top_tracks(:fr).first(5).map { |track| track.name}.join(";") %>"
+    data-track-preview="<%= @spotify.top_tracks(:fr).first(5).map { |track| track.preview_url}.join(";") %>"
+    data-track-image="<%= @spotify.top_tracks(:fr).first(5).map { |track| track.album.images.first["url"]}.join(";") %>"
+    data-controller="spotify-player"
+    class="player-container">
+
+  <%= image_tag "#{@spotify.top_tracks(:fr).first.album.images.first["url"]}", {data: {spotify_player_target: "trackImage"}, class: "image-track"} %>
+  <h3 data-spotify-player-target="trackName" class="track-title"><%= @spotify.top_tracks(:fr).first.name %></h3>
+
+  <div class="progress-bar">
+    <div class="progress-bar-fill" data-spotify-player-target="progressBarFill"></div>
+  </div>
+
+  <div class="player-controls">
+    <button data-action="click->spotify-player#previous">
+      <%= svg_tag "skip-back" %>
+    </button>
+
+    <button data-action="click->spotify-player#play_pause">
+      <%= svg_tag "play" %>
+    </button>
+
+    <button data-action="click->spotify-player#next">
+      <%= svg_tag "skip-forward" %>
+    </button>
+  </div>
+
+</div>
