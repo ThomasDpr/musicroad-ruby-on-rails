@@ -70,6 +70,7 @@ cities = [
   'Créteil', 'La Seyne-sur-Mer', 'Nanterre', 'Poitiers'
 ]
 
+
 cities.each do |city|
   create_city(city)
 end
