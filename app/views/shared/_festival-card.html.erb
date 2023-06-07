@@ -1,0 +1,16 @@
+
+<div class="contianer-festivals">
+  <% @festivals.each do |festival| %>
+    <div class="card-festival">
+      <div class="card-festival-image">
+        <%= cl_image_tag festival.photo.key %>
+      </div>
+
+      <div class="card-festival-content">
+        <h2><%= link_to festival.name, festival_path(festival) %></h2>
+        <p><%= festival.location %></p>
+        <p><%= festival.start_date.strftime("%d-%m-%Y") %></p>
+      </div>
+    </div>
+<% end %>
+</div>
