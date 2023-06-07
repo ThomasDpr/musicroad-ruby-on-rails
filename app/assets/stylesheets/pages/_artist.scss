@@ -1,0 +1,29 @@
+.container-artist{
+  display: flex;
+  justify-content: space-between;
+
+  .artist-left{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .artist-right{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .artist-info{
+      display: flex;
+      align-items: end;
+      gap: 15px;
+
+      img{
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
+}
