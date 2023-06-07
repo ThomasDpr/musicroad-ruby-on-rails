@@ -8,5 +8,6 @@ class FestivalsController < ApplicationController
    
   def show
     @festival = Festival.find(params[:id])
+    @artists = @festival.artists
   end
 end

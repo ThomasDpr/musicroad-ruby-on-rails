@@ -3,5 +3,5 @@
 
 <% @festivals.each do |festival| %>
   <h2><%= link_to festival.name, festival_path(festival) %></h2>
-  <%= image_tag image_url(festival.image), width: 200 %>
+  <%= cl_image_tag festival.photo.key %>
 <% end %>
