@@ -1,6 +1,7 @@
 .container-artist{
   display: flex;
   justify-content: space-between;
+  gap: 100px;
 
   .artist-left{
     display: flex;
@@ -11,7 +12,7 @@
   .artist-right{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 
     .artist-info{
       display: flex;
@@ -23,6 +24,29 @@
         width: 150px;
         object-fit: cover;
         border-radius: 50%;
+      }
+    }
+
+    .albums-container{
+      display: grid;
+      grid-template-columns: repeat(4, 175px);
+      gap: 27px;
+
+      .album{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        transition: transform .2s linear;
+        img{
+          height: 175px;
+          width: 175px;
+          border-radius: 5px;
+        }
+
+        &:hover{
+          transform: scale(1.05);
+        }
       }
     }
   }
