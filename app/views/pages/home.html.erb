@@ -5,15 +5,16 @@
   </div>
 
   <%= form_with url: festivals_path, method: :get, class: "search-bar-container" do %>
+    <button type="submit" class="search-bar-icon">
+      <%= svg_tag "icons/search" %>
+    </button>
+
     <%= text_field_tag :query,
           params[:query],
           class: "search-bar-input",
-          placeholder: "Type a keyword"
+          placeholder: "Rechercher un Festival, Localisation..."
       %>
 
-    <button type="submit" class="search-bar-icon">
-      <%= image_tag "" %>
-    </button>
 
   <% end %>
 
