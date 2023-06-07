@@ -1,6 +1,2 @@
-<h1>Festivals List</h1>
 
-<% @festivals.each do |festival| %>
-  <h2><%= link_to festival.name, festival_path(festival) %></h2>
-  <%= cl_image_tag festival.photo.key %>
-<% end %>
+  <%= render "shared/festival-card" %>
