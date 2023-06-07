@@ -1,1 +1,58 @@
 // Import Google fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+.first-logo-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: $main-text-color;
+  font-size: 30px;
+}
+.second-logo-text{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  color: $main-text-color;
+  font-size: 30px;
+}
+
+a{
+  text-decoration: none;
+  display: inline-block;
+}
+
+.main-first-logo-text{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: $main-text-color;
+  font-size: 100px;
+}
+.main-seconde-logo-text{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  color: $main-text-color;
+  font-size: 100px;
+}
+
+.title-text{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+}
+.tag-text{
+  color: $secondary-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+.track-title{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+.album-text{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}

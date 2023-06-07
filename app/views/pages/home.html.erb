@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="hero-banner">
+
+  <div class="logo">
+    <h1 class="main-first-logo-text">Music<span class="main-seconde-logo-text">Road</span></h1>
+  </div>
+
+  <%= form_with url: festivals_path, method: :get, class: "search-bar-container" do %>
+    <button type="submit" class="search-bar-icon">
+      <%= svg_tag "icons/search" %>
+    </button>
+
+    <%= text_field_tag :query,
+          params[:query],
+          class: "search-bar-input",
+          placeholder: "Rechercher un Festival, Localisation..."
+      %>
+
+
+  <% end %>
+
+</div>

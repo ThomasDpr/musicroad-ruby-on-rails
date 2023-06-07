@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SpotifyPlayerController from "./spotify_player_controller"
+application.register("spotify-player", SpotifyPlayerController)

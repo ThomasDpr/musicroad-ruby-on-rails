@@ -1,6 +1,6 @@
 // Graphical variables
-@import "config/fonts";
 @import "config/colors";
+@import "config/fonts";
 
 // External libraries
 @import "font-awesome";
@@ -8,3 +8,26 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-image: url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.container{
+  max-width: 1280px;
+  margin: auto;
+  padding-inline: 15px;
+  margin-top: 100px;
+}
