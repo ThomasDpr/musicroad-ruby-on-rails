@@ -1,16 +1,33 @@
-
-<div class="contianer-festivals">
+<div class="card-festivals">
   <% @festivals.each do |festival| %>
     <div class="card-festival">
-      <div class="card-festival-image">
-        <%= cl_image_tag festival.photo.key %>
+      <div class="card-festival-image" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path festival.photo.key %>)">
+        <button class="heart-icon">
+          <%= svg_tag "icons/heart-white" %>
+        </button>
+        <div class="card-festival-image-title">
+          <h2><%= festival.name.upcase %></h2>
+        </div>
+        <!-- Image de fond de la carte festival -->
       </div>
-
       <div class="card-festival-content">
-        <h2><%= link_to festival.name, festival_path(festival) %></h2>
-        <p><%= festival.location %></p>
-        <p><%= festival.start_date.strftime("%d-%m-%Y") %></p>
+        <div class="card-festival-bottom">
+          <div class="card-festival-location">
+            <p><%= festival.location %></p>
+          </div>
+          <div class="card-festival-date">
+            <p><%= festival.start_date.strftime("%d-%m-%Y") %> - <%= festival.start_date.strftime("%d-%m-%Y") %></p>
+          </div>
+          <div class="card-festival-inputs">
+            <button class="shared-icon">
+              <%= svg_tag "icons/share" %>
+            </button>
+            <button class="ticket-icon">
+              <%= svg_tag "icons/ticket" %>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-<% end %>
+  <% end %>
 </div>
