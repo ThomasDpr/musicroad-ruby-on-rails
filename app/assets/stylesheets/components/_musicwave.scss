@@ -1,0 +1,41 @@
+.music-wave{
+	height: 24px;
+	display: flex;
+	align-items: center;
+}
+
+.line{
+	height: 0px;
+	width: 2px;
+	margin: 0px 2px;
+	background: white;
+	display: inline-block;
+	border-radius: 2px;
+	animation: loader .5s linear infinite alternate;
+}
+
+.line:nth-child(1){
+	animation-delay: .0s;
+}
+.line:nth-child(2){
+	animation-delay: .2s;
+}
+
+.line:nth-child(3){
+	animation-delay: .5s;
+}
+
+.line:nth-child(4){
+	animation-delay: .3s;
+}
+
+.line:nth-child(5){
+	animation-delay: .1s;
+}
+
+@keyframes loader{
+	to{
+		height: 24px;
+
+	}
+}
