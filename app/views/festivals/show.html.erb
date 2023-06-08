@@ -1,0 +1,15 @@
+<h1><%= @festival.name %></h1>
+
+<%= cl_image_tag @festival.photo.key %>
+<p><%= @festival.location %></p>
+<p><%= @festival.description %></p>
+<p><%= @festival.start_date.strftime("%d-%m-%Y") %></p>
+
+<p>
+  <strong>Artists:</strong>
+  <ul>
+    <% @artists.each do |artist| %>
+      <li><%= artist.name %></li> 
+    <% end %>
+  </ul>
+</p>

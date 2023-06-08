@@ -1,7 +1,8 @@
 require "test_helper"
 
-class ArtistsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+class ArtitsControllerTest < ActionDispatch::IntegrationTest
+  test "should get show" do
+    get artits_show_url
+    assert_response :success
+  end
 end
