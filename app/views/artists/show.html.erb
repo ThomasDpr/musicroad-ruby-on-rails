@@ -1,39 +1,42 @@
-<div class="container container-artist">
+<div class="container container-artist" data-controller="spotify-player">
   <div class="artist-left">
 
-    <%= link_to root_path, class: "back-icon" do %>
-      <%= svg_tag "icons/back" %>
-    <% end %>
+    <div class="sticky-player">
+      <%= link_to root_path, class: "back-icon" do %>
+        <%= svg_tag "icons/back" %>
+      <% end %>
 
     <%#* SPOTIFY PLAYER %>
-    <div data-track-name="<%= @top_tracks.map { |track| track.name}.join(";") %>"
-        data-track-preview="<%= @top_tracks.map { |track| track.preview_url}.join(";") %>"
-        data-track-image="<%= @top_tracks.map { |track| track.album.images.first["url"]}.join(";") %>"
-        data-controller="spotify-player"
-        class="player-container">
+      <div data-track-name="<%= @top_tracks.map { |track| track.name}.join(";") %>"
+          data-track-preview="<%= @top_tracks.map { |track| track.preview_url}.join(";") %>"
+          data-track-image="<%= @top_tracks.map { |track| track.album.images.first["url"]}.join(";") %>"
+          data-spotify-player-target="player"
+          class="player-container">
 
-      <%= image_tag "#{@top_tracks.first.album.images.first["url"]}", {data: {spotify_player_target: "trackImage"}, class: "image-track"} %>
-      <h3 data-spotify-player-target="trackName" class="track-title"><%= @top_tracks.first.name %></h3>
+        <%= image_tag "#{@top_tracks.first.album.images.first["url"]}", {data: {spotify_player_target: "trackImage"}, class: "image-track"} %>
+        <h3 data-spotify-player-target="trackName" class="track-title"><%= @top_tracks.first.name %></h3>
 
-      <div class="progress-bar">
-        <div class="progress-bar-fill" data-spotify-player-target="progressBarFill"></div>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" data-spotify-player-target="progressBarFill"></div>
+        </div>
+
+        <div class="player-controls">
+          <button data-action="click->spotify-player#previous" class="player-icon">
+            <%= svg_tag "icons/skip-back" %>
+          </button>
+
+          <button data-action="click->spotify-player#play_pause" data-spotify-player-target="playing" class="player-icon">
+            <%= svg_tag "icons/play" %>
+          </button>
+
+          <button data-action="click->spotify-player#next" class="player-icon">
+            <%= svg_tag "icons/skip-forward" %>
+          </button>
+        </div>
       </div>
-
-      <div class="player-controls">
-        <button data-action="click->spotify-player#previous" class="player-icon">
-          <%= svg_tag "icons/skip-back" %>
-        </button>
-
-        <button data-action="click->spotify-player#play_pause" class="player-icon">
-          <%= svg_tag "icons/play" %>
-        </button>
-
-        <button data-action="click->spotify-player#next" class="player-icon">
-          <%= svg_tag "icons/skip-forward" %>
-        </button>
-      </div>
+      <a href="<%= @spotify.external_urls["spotify"] %>" class="btn-spotify"><%= svg_tag "icons/spotify", class: "spotify-icon" %> Écouter plus</a>
     </div>
-    <a href="<%= @spotify.external_urls["spotify"] %>" class="btn-spotify"><%= svg_tag "icons/spotify", class: "spotify-icon" %> Écouter plus</a>
+
   </div>
 
   <div class="artist-right">
@@ -53,6 +56,23 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+
+    <div class="tracks-container">
+      <% @top_tracks.each_with_index do |track, index| %>
+        <div class="track-container">
+          <div class="album">
+            <%= image_tag "#{track.album.images.first["url"]}" %>
+            <h3 class="album-text"><%= track.name %></h3>
+          </div>
+          <h3 class="album-text"><%= track.album.name %></h3>
+          <button data-action="click->spotify-player#singleMusic"
+                  data-index="<%= index %>"
+                  data-spotify-player-target="singleMusic"
+                  class="btn-spotify-track">
+                  <%= svg_tag "icons/play" %>
+          </button>
+        </div>
+      <% end %>
+    </div>
 
 </div>
