@@ -23,13 +23,9 @@ export default class extends Controller {
 
   play_pause(event) {
     if (this.audio.paused) {
-      this.audio.play();
-      this.playingTarget.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
-      this.#showicon();
+      this.#playMusic();
     } else {
-      this.audio.pause();
-      this.playingTarget.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0  24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
-      this.singleMusicTargets[this.index].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+      this.#pauseMusic();
     }
 
     this.#bumpPlayerIcon(event);
@@ -66,11 +62,17 @@ export default class extends Controller {
   }
 
   singleMusic(event) {
-    this.#hideicon()
-    this.index = event.currentTarget.dataset.index;
-    this.#showicon();
-    this.#bumperImage();
-    this.#playMusic();
+    if (event.currentTarget.dataset.index === this.index && !this.audio.paused) {
+      this.#pauseMusic();
+    } else if (event.currentTarget.dataset.index === this.index && this.audio.paused) {
+      this.#playMusic();
+    } else {
+      this.#hideicon()
+      this.index = event.currentTarget.dataset.index;
+      this.#showicon();
+      this.#bumperImage();
+      this.#playMusic();
+    }
   }
 
   #playMusic() {
@@ -105,5 +107,17 @@ export default class extends Controller {
     setTimeout(() => {
       copyevent.classList.remove("bump-animation");
     }, 400);
+  }
+
+  #pauseMusic() {
+    this.audio.pause();
+    this.playingTarget.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0  24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+    this.singleMusicTargets[this.index].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+  }
+
+  #playMusic() {
+    this.audio.play();
+    this.playingTarget.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+    this.#showicon();
   }
 }
