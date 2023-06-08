@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :festivals, only: %i[index show] do
     resources :favorites, only: [:create]
+    resources :artists, only: [:show]
   end
 
   resources :favorites, only: [:destroy]
@@ -12,6 +13,4 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  # Custom route for the Artist
-  resources :artists, only: [:show]
 end
