@@ -1,6 +1,7 @@
 <div class="card-festivals">
   <% @festivals.each do |festival| %>
     <div class="card-festival">
+  <%= link_to festival_path(festival) do %>
       <div class="card-festival-image" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path festival.photo.key %>)">
         <button class="heart-icon">
           <%= svg_tag "icons/heart-white" %>
