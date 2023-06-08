@@ -1,0 +1,11 @@
+#map {
+  height: calc(100vh - 100px);
+  margin-top: 15px;
+  width: 30%;
+  position: sticky;
+  top: calc(58px + 15px);
+
+    iframe {
+      border-radius: 25px;
+    }
+}
