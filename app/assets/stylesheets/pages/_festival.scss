@@ -1,0 +1,102 @@
+.festival-show-container{
+  background-color: rgba($color: #000000, $alpha: .5);
+  border-radius: 10px;
+  padding: 30px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .festival-show-top{
+    display: flex;
+    width: 100%;;
+    gap: 30px;
+
+    .festival-show-left{
+      width: 45%;
+      height: 400px;
+      background-position: center;
+      background-size: cover;
+      border-radius: 15px;
+
+      position: relative;
+
+      svg{
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: white;
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    .festival-show-right{
+      display: flex;
+      flex-direction: column;
+      width: 55%;
+      gap: 30px;
+
+      .festival-title-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .festival-title-left{
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          svg{
+            width: 35px;
+            height: 35px;
+            color: white;
+          }
+        }
+
+        svg{
+          width: 30px;
+          height: 30px;
+          color: white;
+        }
+
+      }
+      .festival-artists-container{
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+
+        .festival-artist{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: fit-content;
+          height: fit-content;
+          gap: 5px;
+
+          img{
+            height: 100px;
+            width: 100px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .festival-show-info{
+        display: flex;
+        justify-content: space-between;
+      }
+
+
+
+    }
+  }
+  .festival-show-bottom{
+    border-radius: 15px;
+    height: 500px;
+
+    iframe{
+      border-radius: 15px;
+    }
+  }
+}
