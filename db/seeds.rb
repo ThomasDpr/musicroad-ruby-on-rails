@@ -29,8 +29,13 @@ def create_festival(name, location, description, start_date, image_path, artist_
     artist = Artist.find_or_create_by(name: artist_name)
     FestivalsArtist.create!(festival: festival, artist: artist)
   end
-
   puts "#{name} artists created !"
+
+  City.all.each do |city|
+    create_chatroom(festival: festival, city: city)
+  end
+
+  festival
 end
 
 def create_user(first_name, last_name, age, email, password, photo_path)
@@ -54,26 +59,35 @@ end
 def create_city(name)
   puts "Creating city: #{name}..."
 
-  City.create!(
+  city = City.create!(
     name: name
   )
 
   puts "#{name} created !"
+  city
+end
+
+def create_chatroom(festival:, city:)
+  name = "#{festival.name} - #{city.name}"
+  chatroom = Chatroom.create(festival: festival, city: city, name: name)
 end
 
 cities = [
-  'Paris', 'Marseille', 'Lyon', 'Toulouse', 'Nice', 'Nantes', 'Strasbourg', 'Montpellier', 'Bordeaux', 'Lille',
-  'Rennes', 'Reims', 'Saint-Étienne', 'Toulon', 'Le Havre', 'Cergy', 'Grenoble', 'Dijon', 'Angers', 'Nîmes',
-  'Villeurbanne', 'Saint-Denis', 'La Rochelle', 'Clichy', 'Aix-en-Provence', 'Saint-Quentin', 'Brest', 'Limoges',
-  'Tours', 'Amiens', 'Perpignan', 'Metz', 'Besançon', 'Boulogne-Billancourt', 'Orléans', 'Mulhouse', 'Rouen',
-  'Caen', 'Nancy', 'Argenteuil', 'Saint-Paul', 'Montreuil', 'Roubaix', 'Tourcoing', 'Dunkerque', 'Avignon',
-  'Créteil', 'La Seyne-sur-Mer', 'Nanterre', 'Poitiers'
+  'Paris', 'Marseille', 'Lyon', 'Toulouse', 'Nice', 'Nantes', 'Strasbourg', 'Bordeaux', 'Lille',
+  'Brest'
 ]
+paris = City.create!(name: "Paris")
+lyon = City.create(name: "Lyon")
+toulouse = City.create(name: "Toulouse")
+nice = City.create(name: "Nice")
+nantes = City.create(name: "Nantes")
+strasbourg = City.create(name: "Strasbourg")
+bordeaux = City.create(name: "Bordeaux")
+lille = City.create(name: "Lille")
 
-
-cities.each do |city|
-  create_city(city)
-end
+#cities.each do |city|
+  ## city
+#end
 
 create_user(
   'Drink',
@@ -174,7 +188,7 @@ create_user(
   'db/avatar/seyfried_gonzalez.jpg'
 )
 
-create_festival(
+musicalarue = create_festival(
   'Musicalarue',
   'Luxey (40)',
   'Musicalarue est un festival de musique qui se déroule chaque année à Luxey',
@@ -194,7 +208,7 @@ create_festival(
   ]
 )
 
-create_festival(
+retro_c_trop = create_festival(
   'Retro C Trop',
   'Tilloloy (80)',
   "Retro mais toujours dans le vent, ces groupes et artistes qui ont déjà 20, 30, 40 ou même 50 ans de carrière. Alors si vous aimé le rock et la pop intemporelle, rendez-vous le vendredi 23 et le dimanche 25 juin 2023 dans le parc du château de Tilloloy, dans la Somme.",
@@ -207,7 +221,7 @@ create_festival(
   ]
 )
 
-create_festival(
+festival_de_nimes = create_festival(
   'Festival De Nimes',
   'Nimes (30)',
   "Le Festival de Nîmes se déroule depuis 1997 au sein des Arènes de Nîmes. Dans ce monument historique, témoin du passage de l'empire romain, des artistes français et internationaux se produisent chaque été. Stevie Wonder, Muse, Metallica, Pharrell Williams, Johnny Hallyday, Michel Polnaref ou encore Stromae, autant de grands artistes qui ont laissé leur trace à Nïmes.
@@ -222,7 +236,7 @@ create_festival(
   ]
 )
 
-create_festival(
+les_nuits_de_fourviere = create_festival(
   'Les Nuits De Fourviere',
   'Lyon (69)',
   "Les Nuits de Fourvière est un festival de musique et de théâtre qui se déroule chaque année à Lyon. Il se déroule dans le théâtre antique de Fourvière, un lieu classé au patrimoine mondial de l'UNESCO. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
@@ -235,7 +249,7 @@ create_festival(
   ]
 )
 
-create_festival(
+festival_de_trelaze = create_festival(
   'Festival De Trelaze',
   'Trelaze (49)',
   "Le Festival de Trélazé est un festival de musique qui se déroule chaque année à Trélazé, dans le Maine-et-Loire. Il se déroule dans le parc du Vissoir, un lieu verdoyant et arboré. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
@@ -266,7 +280,7 @@ create_festival(
   ]
 )
 
-create_festival(
+solidays = create_festival(
   'Solidays',
   'Paris (75)',
   "Solidays est un festival de musique et de solidarité qui se déroule chaque année à Paris. Il se déroule dans l'hippodrome de Longchamp, un lieu verdoyant et arboré. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
@@ -278,3 +292,7 @@ create_festival(
     'ZOLA', 'SHAKA PONK', 'PIERRE DE MAERE', 'DELUXE', 'ANGELE', 'LA FEMME', 'HAMZA', 'FAVE', 'YOUV DEE', 'REMA', 'OETE', 'GWENDOLINE', 'CERRONE', 'CHRONOLOGIC', 'SHYGIRL'
   ]
 )
+
+#créer une chatroom
+#create chatroom ( 1 = Chatroom.create ())
+#
