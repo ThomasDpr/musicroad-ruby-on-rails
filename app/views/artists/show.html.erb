@@ -60,8 +60,10 @@
     <div class="tracks-container">
       <% @top_tracks.each_with_index do |track, index| %>
         <div class="track-container">
-          <%= image_tag "#{track.album.images.first["url"]}" %>
-          <h3 class="album-text"><%= track.name %></h3>
+          <div class="album">
+            <%= image_tag "#{track.album.images.first["url"]}" %>
+            <h3 class="album-text"><%= track.name %></h3>
+          </div>
           <h3 class="album-text"><%= track.album.name %></h3>
           <button data-action="click->spotify-player#singleMusic"
                   data-index="<%= index %>"
