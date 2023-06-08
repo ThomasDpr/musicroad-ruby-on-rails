@@ -58,12 +58,19 @@
       .track-container{
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 15px;
         padding: 5px;
+        padding-right: 10px;
         border-radius: 5px;
         background-color: rgba($color: #000000, $alpha: 0.6);
         backdrop-filter: blur(5px);
 
+        .album{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
         img{
           height: 75px;
           width: 75px;
