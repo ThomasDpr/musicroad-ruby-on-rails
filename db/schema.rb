@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_105221) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_09_093739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_105221) do
     t.float "max_price"
     t.date "start_date"
     t.string "image"
+    t.date "end_date"
+    t.string "url"
   end
 
   create_table "festivals_artists", force: :cascade do |t|

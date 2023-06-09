@@ -6,15 +6,15 @@ Festival.destroy_all
 User.destroy_all
 
 
-def create_festival(name, location, description, start_date, image_path, artist_names)
+def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names)
   puts "Creating festival: #{name}..."
-
   festival = Festival.create!(
     name: name,
     location: location,
     description: description,
-    start_date: Date.new(*start_date.split('/').reverse.map(&:to_i)).strftime('%d/%m/%Y')
-
+    start_date: start_date,
+    end_date: end_date,
+    url: url
   )
 
   file = File.open(Rails.root.join(image_path))
@@ -192,8 +192,10 @@ musicalarue = create_festival(
   'Musicalarue',
   'Luxey (40)',
   'Musicalarue est un festival de musique qui se déroule chaque année à Luxey',
-  '28/07/2023',
-  'db/images_festivals/festival-card-bg.jpg',
+  Date.new(2023, 7, 28 ),
+  'db/images_festivals/festival-1.jpg',
+  Date.new(2023, 7, 30 ),
+  'https://www.musicalarue.com/',
   [
     'ODEZENNE', 'BIGA RANX', 'JAIN', 'HUBERT FELIX THIEFAINE - Replugged', 'WAX TAILOR', 'MARC LAVOINE',
     'BCUC (Bantu Continua Uhuru Consciousness)', 'SILMARILS', 'EMILIE SIMON', 'OUAI STEPHANE', 'LABESS',
@@ -210,10 +212,12 @@ musicalarue = create_festival(
 
 retro_c_trop = create_festival(
   'Retro C Trop',
-  'Tilloloy (80)',
+  'Chateau De Tilloloy, 80700 Tilloloy',
   "Retro mais toujours dans le vent, ces groupes et artistes qui ont déjà 20, 30, 40 ou même 50 ans de carrière. Alors si vous aimé le rock et la pop intemporelle, rendez-vous le vendredi 23 et le dimanche 25 juin 2023 dans le parc du château de Tilloloy, dans la Somme.",
-  '23/06/2023',
-  'db/images_festivals/festival-card-bg.jpg',
+  Date.new(2023, 6, 23 ),
+  'db/images_festivals/festival-2.jpg',
+  Date.new(2023, 6, 25 ),
+  'https://www.retroctrop.fr/',
   [
     'LOUIS BERTIGNAC', 'LARKIN POE', 'CHRIS ISAAK', 'CANNED HEAT', 'CARAVAN',
     'TEXAS', 'BLANKASS', 'BARCLAY JAMES HARVEST', 'LEVEL 42', 'UUHAI', 'LENE LOVICH',
@@ -226,8 +230,10 @@ festival_de_nimes = create_festival(
   'Nimes (30)',
   "Le Festival de Nîmes se déroule depuis 1997 au sein des Arènes de Nîmes. Dans ce monument historique, témoin du passage de l'empire romain, des artistes français et internationaux se produisent chaque été. Stevie Wonder, Muse, Metallica, Pharrell Williams, Johnny Hallyday, Michel Polnaref ou encore Stromae, autant de grands artistes qui ont laissé leur trace à Nïmes.
   Un festival devenu incontournable dans le calendrier des festivaliers chaque été.",
-  '23/06/2023',
-  'db/images_festivals/festival-card-bg.jpg',
+  Date.new(2023, 6, 23 ),
+  'db/images_festivals/festival-3.jpg',
+  Date.new(2023, 7, 22 ),
+  'https://www.festivaldenimes.com/',
   [
     'DAMSO', 'M. POKORA', 'JENIFER', 'SIMPLY RED', 'SELAH SUE', 'SLIPKNOT', 'SOPRANO', 'FLORENT PAGNY',
     'ZAZIE', 'SAEZ', 'GOJIRA', 'THE BLACK KEYS', 'PLACEBO', 'MICHEL POLNAREFF', 'STARS 80 ENCORE !',
@@ -238,10 +244,12 @@ festival_de_nimes = create_festival(
 
 les_nuits_de_fourviere = create_festival(
   'Les Nuits De Fourviere',
-  'Lyon (69)',
+  '6 rue de l’Antiquaille, 69005 Lyon',
   "Les Nuits de Fourvière est un festival de musique et de théâtre qui se déroule chaque année à Lyon. Il se déroule dans le théâtre antique de Fourvière, un lieu classé au patrimoine mondial de l'UNESCO. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
-  '07/06/2023',
-  'db/images_festivals/festival-card-bg.jpg',
+  Date.new(2023, 5, 31 ),
+  'db/images_festivals/festival-4.jpg',
+  Date.new(2023, 7, 28 ),
+  'https://www.nuitsdefourviere.com/',
   [
     'CATHERINE RINGER', 'ORCHESTRE DE L\'OPERA DE LYON', 'BIRELI LAGRENE', 'SYLVAIN LUC', 'VINICIO CAPOSSELA', 'BARO D\'EVEL', 'UNSTILL LIFE', 'MICHEL POLNAREFF',
     'DISIZ', 'ALOÏSE SAUVAGE', 'BERNARD LAVILLIERS', 'SIMPLY RED', 'THE WHITE  ROSE OF ATHENS', 'BOYS BOYS BOYS', 'ANDRE MINVIELLE', 'ALT-J', 'THE BLACK KEYS', 'STAR FEMININE BAND', 'QUEENS OF THE STONE AGE', "BENJAMIN BIOLAY", 'ROBIN MICKELLE',
@@ -251,10 +259,12 @@ les_nuits_de_fourviere = create_festival(
 
 festival_de_trelaze = create_festival(
   'Festival De Trelaze',
-  'Trelaze (49)',
+  'Parc du vissoir, 49800 Trélazé',
   "Le Festival de Trélazé est un festival de musique qui se déroule chaque année à Trélazé, dans le Maine-et-Loire. Il se déroule dans le parc du Vissoir, un lieu verdoyant et arboré. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
-  '21/06/2023',
-  'db/images_festivals/festival-card-bg.jpg',
+  Date.new(2023, 6, 21 ),
+  'db/images_festivals/festival-5.jpg',
+  Date.new(2023, 7, 24 ),
+  'https://www.trelaze.fr/ville-evenement/festival-de-trelaze',
   [
     "IMAGINATION FEAT. LEEE JOHN",
     "SHEILA",
@@ -282,10 +292,12 @@ festival_de_trelaze = create_festival(
 
 solidays = create_festival(
   'Solidays',
-  'Paris (75)',
+  'Hippodrome de Longchamp, 75000 Paris',
   "Solidays est un festival de musique et de solidarité qui se déroule chaque année à Paris. Il se déroule dans l'hippodrome de Longchamp, un lieu verdoyant et arboré. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
-  '23/06/2023',
-  'db/images_festivals/festival-card-bg.jpg',
+  Date.new(2023, 6, 23 ),
+  'db/images_festivals/festival-6.jpg',
+  Date.new(2023, 6, 25 ),
+  'https://www.solidays.org/',
   [
     'TIAKOLA', 'JULIETTE ARMANET', 'LUIDJI', 'SCH', 'SOFIANE PAMART', 'JAIN', 'DJADJA & DINAZ', 'ASCENDANT VIERGE', 'NAAMAN', 'ADE', 'IRENE DRESEL', 'JULIEN GRANEL', 'KERCHAK', 'ZAOUI', 'SALUT C\'EST COOL', 'LEWIS OFMAN', 'KIDS RETURN', 'ANETHA', 'MARABOUTAGE', 'SAMA ABDULHADI', 'KIDDY SMILE', 'EARTHGANG', 'SHLØMO (SCHLOMO)', 'BUG DE L\'AN 2000',
     'ZAHO DE SAGAZAN', 'JOSMAN', 'BIGFLO ET OLI', 'JOK\'AIR', 'ZIAK', 'FAADA FREDDY', 'MIEL DE MONTAGNE', 'VLADIMIR CAUCHEMAR', 'MERYL', 'KALIKA', 'HERVE', 'HYPHEN HYPHEN', 'KUNGS', 'BILLX', 'MANDRAGORA', 'PAROV STELAR', 'ROLAND CRISTAL', 'SAINT LEVANT', 'J. BALVIN', 'MR OIZO',
