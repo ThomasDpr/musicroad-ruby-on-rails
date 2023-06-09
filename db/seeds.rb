@@ -211,8 +211,8 @@ musicalarue = create_festival(
   ]
 )
 
-file = File.open(Rails.root.join("db/images_festivals/festival-1.jpg"))
-musicalarue.photo.attach(io: file, filename: "festival.jpg", content_type: "image/jpeg")
+file = File.open('db/images_festivals/festival-1.jpg')
+musicalarue.photo.attach(io: file, filename: 'festival-1.jpg', content_type: 'image/jpg')
 musicalarue.save!
 
 retro_c_trop = create_festival(
