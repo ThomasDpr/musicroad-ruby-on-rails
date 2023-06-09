@@ -75,7 +75,9 @@ export default class extends Controller {
   }
 
   #playMusic() {
-    this.audio.src = this.playlist[this.index];
+    if (this.audio.src !== this.playlist[this.index] ) {
+      this.audio.src = this.playlist[this.index];
+    }
     this.audio.play();
     this.trackNameTarget.innerText = this.trackName[this.index];
     this.trackImageTarget.src = this.trackImage[this.index];
