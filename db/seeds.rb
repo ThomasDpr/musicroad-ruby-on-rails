@@ -6,7 +6,7 @@ Festival.destroy_all
 User.destroy_all
 
 
-def create_festival(name, location, description, start_date, photo_path, end_date, url, artist_names)
+def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names)
   puts "Creating festival: #{name}..."
   festival = Festival.create!(
     name: name,
