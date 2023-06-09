@@ -1,14 +1,20 @@
-<h1>Chatrooms</h1>
-<p>Find me in app/views/chatrooms/show.html.erb</p>
-
-<div class="container chatroom">
-  <h1>#<%= @chatroom.name %></h1>
+<div class="container-chatroom">
+  <div class="chatroom-title">
+  <h1><%= @chatroom.festival.name %></h1>
+  </div>
+    <% @chatrooms.each do |chatroom| %>
+      <%=  link_to chatroom_path(chatroom) do %>
+        <div class="chatrooms-city">
+          <h2> <%= chatroom.city.name %></h2>
+        </div>
+    <% end %>
+  <% end %>
 
   <div class="messages">
     <% @chatroom.messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
-          <strong><%= message.user.nickname %></strong>
+          <strong><%= message.current_user.nickname %></strong>
           <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
         </small>
         <p><%= message.content %></p>
