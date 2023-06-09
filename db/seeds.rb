@@ -18,7 +18,7 @@ def create_festival(name, location, description, start_date, photo_path, end_dat
   )
 
   file = File.open(Rails.root.join(photo_path))
-  festival.photo.attach(io: file, filename: 'image.jpg', content_type: 'image/jpg')
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
   festival.save!
 
   puts "#{name} created !"
