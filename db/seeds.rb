@@ -235,9 +235,9 @@ festival_de_nimes = create_festival(
   Date.new(2023, 7, 22 ),
   'https://www.festivaldenimes.com/',
   [
-    'DAMSO', 'M. POKORA', 'JENIFER', 'SIMPLY RED', 'SELAH SUE', 'SLIPKNOT', 'SOPRANO', 'FLORENT PAGNY',
-    'ZAZIE', 'SAEZ', 'GOJIRA', 'THE BLACK KEYS', 'PLACEBO', 'MICHEL POLNAREFF', 'STARS 80 ENCORE !',
-    'SAM SMITH', 'LOMEPAL', 'ARCTIC MONKEYS', 'LUDOVICO EINAUDI', 'CHILLY GONZALES', 'SIGUR ROS', '
+    'DAMSO', 'M POKORA', 'LOMEPAL', 'SIMPLY RED', 'SELAH SUE', 'SLIPKNOT', 'SOPRANO', 'FLORENT PAGNY',
+    'ZAZIE', 'SAEZ', 'GOJIRA', 'THE BLACK KEYS', 'PLACEBO', 'MICHEL POLNAREFF', 'STARS 80 ENCORE',
+    'SAM SMITH', 'JENIFER', 'ARCTIC MONKEYS', 'LUDOVICO EINAUDI', 'CHILLY GONZALES', 'SIGUR ROS', '
     CHRISTOPHE MAE', 'DJADJA & DINAZ', 'LOUISE ATTAQUE', 'DADJU', 'GIMS'
   ]
 )
@@ -305,6 +305,92 @@ solidays = create_festival(
   ]
 )
 
-#créer une chatroom
-#create chatroom ( 1 = Chatroom.create ())
-#
+festival_des_vieilles_charrues = create_festival(
+  'Festival des Vieilles Charrues',
+  'Carhaix-Plouguer (29)',
+  "Le Festival des Vieilles Charrues est un festival de musique qui se déroule chaque année à Carhaix-Plouguer, dans le Finistère. Il se déroule dans le parc du Vissoir, un lieu verdoyant et arboré. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
+  Date.new(2023, 7, 13 ),
+  'db/images_festivals/festival-7.jpg',
+  Date.new(2023, 7, 17 ),
+  'https://www.vieillescharrues.asso.fr/',
+  [
+    'ROBBIE WILLIAMS', 'BIGFLO & OLI', 'DISIZ', 'HYPHEN HYPHEN', 'MORCHEEBA', 'PETIT BISCUIT', 'MIMAA', 'ORANGE BLOSSOM & LES FLEURS DE METAL',
+    'PIERRE DE MAERE', 'SILLY BOY BLUE', 'UZI FREYJA', 'THE WAEVE', 'TRAMHAUS', 'TUKAN', 'BLUR', 'AYA NAKAMURA', 'GAZO', 'JEANNE ADDED', 'SHAKA PONK',
+    'AGAR AGAR', 'AGORIA', 'BIGA*RANX', 'KO KO MO', 'LASS', 'MERYL', 'REYNZ', 'SBRBS', 'THE CELTIC SOCIAL CLUB', 'BRAMA', 'LA BRUULU (KBA#9)',
+    'NONE SOUNDS', 'THE WACKY JUGS', 'ROSALIA', 'LOMEPAL', 'IDLES', 'KUNGS', 'LETO & GUY2BEZBAR', 'POMME', 'SUZANE', 'BILLX', 'EASY LIFE',
+    'JOHNNIE CARWASH', 'LEWIS OFMAN', 'MINUIT MACHINE', 'VOYOU', 'ZAHO DE SAGAZAN', 'BARRUT & DIRIDOLLOU LAVIGNE', 'DE LA CRAU', 'FEST NOZ', 'SOPRANO', 'PHOENIX', 'HOT CHIP', 'JAIN', 'LORENZO', 'MODERAT', 'PAUL KALKBRENNER', 'ACID ARAB', 'ADE', 'GWENDOLINE', 'JOYSAD', 'KALIKA', 'MADEMOISELLE K', 'STUFFED FOXES', 'AVALANCHE KAITO', 'KAOLILA', 'PARRANDA LA CRUZ', 'TAXI KEBAB', 'RED HOT CHILI PEPPERS'
+  ]
+)
+
+
+la_nuit_de_l_erdre = create_festival(
+  'La nuit de l\'Erdre',
+  '1 Rue de Rocheflour, 44390 Nort-sur-Erdre',
+  'Au programme du Festival La Nuit De L\'Erdre 2023, retrouvez de nombreux artistes et groupes de musique en concert à Nort sur Erdre.',
+  Date.new(2023, 6, 29),
+  'db/images_festivals/festival-8.jpg',
+  Date.new(2023, 7, 2),
+  'https://www.lanuitdelerdre.fr/',
+  [
+    'Indochine', 'Lomepal', 'Juliette Armanet', 'Louise Attaque', 'Suzane', 'Biga Ranx', 'La Femme', 'Lorenzo', 'Shaka Ponk',
+    'Lujipeka', 'Josman', 'Groundation', 'Franz Ferdinand', 'Phoenix', 'Fatoumata Diawara', 'Feder', 'Martin Solveig', 'Ko Ko Mo',
+    'Royal Republic', 'Rag\'n\'bone Man', 'Dirtyphonics', 'Coach Party', 'Foals', 'Green Line Marching Band', 'Dynamite Shakers'
+  ]
+)
+
+hellfest = create_festival(
+  'Hellfest',
+  'Rue du Champ Louet, 44190 Clisson',
+  'Le Hellfest est un festival de musique français spécialisé dans les musiques extrêmes, annuellement organisé au mois de juin à Clisson en Loire-Atlantique. Fondé en 2006, il est aujourd\'hui l\'un des plus importants festivals de musique en France, avec une fréquentation de 180 000 festivaliers en 2019.',
+  Date.new(2023, 6, 15),
+  'db/images_festivals/festival-9.jpg',
+  Date.new(2023, 6, 18),
+  'https://www.hellfest.fr/',
+  [
+    "Kiss", "Hollywood Vampires", "Generation Sex", "Coheed and Cambria",
+    "Parkway Drive", "Architects", "In Flames", "I Prevail", "Code Orange",
+    "Fishbone", "Svinkels", "Ludwig Von 88", "Poesie zero", "Kamizol-K",
+    "Amenra", "The Soft Moon", "DVNE", "Today is the day", "Celeste",
+    "Katatonia", "Hypocrisy", "Candlemass", "Nightfall", "Aephanemer",
+    "Behemoth", "Dark Funeral", "Harakiri For the Sky", "Imperial Triumphant", "Blackbraid", "Mötley Crüe", "Def Leppard", "Alter Bridge", "Skid Row",
+    "Elegant Weapons", "British Lion", "The Quireboys", "P-Trolls",
+    "SUM 41", "Machine Gun Kelly", "Papa Roach", "Motionless in white", "Silmaris", "Mod Sun", "Escape The Fate", "Vended",
+    "Gogol Bordello", "Rancid", "Flogging Molly", "Less Than Jake", "Cockney Rejects", "The Chats", "Komintern Sect", "Peter Pan Speedrock", "Syndrome 81",
+    "Botch", "Triggerfinger", "Greg Puciato", "Weedeater", "Bongripper", "Primitive Man", "Helms Alee", "LLNN", "My Diligence",
+    "As I Lay Dying", "Bloodbath", "Belphegor", "Aborted", "Uneath", "Full of Hell", "Nostromo", "Candy", "Venefixion",
+    "Venom Inc", "Gorgoroth", "1349", "Vreid", "Der Weg Einer Freiheit", "Akiavel", "Acod", "Belenos", "Hetroertzen",
+    "Carpenter Brut", "Iron Maiden", "Porcupine Tree", "Puscifer", "Riverside", "Evergrey", "Enforcer", "Scarlean",
+    "Within Temptation", "Powerwolf", "Arch Enemy", "Beast in Black", "Asking Alexandria", "Fever 333", "Bloodywood", "Cobra the Impaler",
+    "Municipal Waste", "Black Flag", "Stray for the Path", "Pro-Pain", "Soul GLO", "Mindforce", "Spiritworld", "Zulu", "Hard Mind",
+    "Clutch", "Monster Magnet", "Earthless", "The Obsessed", "Grandma's Ashes", "Crowbar", "King Buffalo", "Spirit Adrift", "Decasia",
+    "Meshuggah", "Voivod", "Lorna Shore", "Born of Osiris", "Gorod", "Loathe", "Ten56", "The Dali Thundering Concept", "Pestifer",
+    "The Hu", "Faun", "Finntroll", "Myrath", "Saor", "Svalbard", "Kalandra", "Hierophant", "Nature Morte",
+    "Slipknot", "Tenacious D", "Amon Amarth", "Hatebreed", "Hollywood Undead", "Ho99o9", "Florence Black", "Do or Die",
+    "Pantera", "Incubus", "Electric Callboy", "Halestorm", "The Menzingers", "Thundermother", "Skynd",
+    "The Ghost Inside", "Rise of the Northstar", "The Amity Affliction", "Paleface", "Cane Hill", "End", "Resolve", "Beyond the Styx",
+    "Melvins", "Dance with the Dead", "Mutoid Man", "Dozer", "Legion of Doom", "Empire State Bastard", "Wolvennest", "Doodseskader",
+    "Testament", "Dark Angel", "Benediction"
+  ]
+)
+
+les_francofolies_de_la_rochelle = create_festival(
+  'Les Francofolies de la Rochelle',
+  'Esp. Saint-Jean d\'Acre, 17000 La Rochelle',
+  'Les Francofolies de La Rochelle est un festival de musique créé en 1985 par Jean-Louis Foulquier. Il se tient chaque année à La Rochelle, en Charente-Maritime, au mois de juillet. Il est consacré à la chanson francophone.',
+  Date.new(2023, 7, 12),
+  'db/images_festivals/festival-10.jpg',
+  Date.new(2023, 7, 16),
+  'https://www.francofolies.fr/',
+  [
+    "Lomepal", "Matthieu Chedid", "Tiakola", "Louise Attaque", "Izïa", "Soprano", "Renaud", "Louane", "Sheila","Biga Ranx",
+    "Deluxe", "Gazo", "Adé", "Cali", "Shaka Ponk", "Michel Polnareff", "Daniel Auteuil", "Pierre De Maere",
+    "Bertrand Belin", "Matmatah", "Dj Snake", "Mentissa", "Disiz", "Pomme", "Ange", "Mademoiselle K", "Chilla", "Voyou",
+    "Hervé Vilard", "Albin De La Simone", "Clarika", "Maissiat", "November Ultra", "Aurelie Saada", "Emilie Simon",
+    "Sly Johnson", "Aime Simone", "Mathias Malzieu", "Bb Jacques", "Yuksek", "Bagarre", "Djadja Et Dinaz", "Mezerg",
+    "Flavien Berger", "Star Feminine Band", "Lewis Evans", "Oete", "Daria Nelson", "Perturbator", "Gabi Hartmann",
+    "Nicolas Maury", "Birds In Row", "Emmanuel Noblet", "Martin Luminet", "Nina", "Waxx", "San Salvador",
+    "Matt Holubowski", "Pierre Guénard", "Contrebande", "Di Bosco", "Sierra", "Thierry Larose", "Nelick", "Uzi",
+    "Freyja", "Annie .adaa", "Social Dance", "Lisa Ducasse", "Claude", "Ada Oda", "Neniu", "Rallye", "Yoa",
+    "Jeanne Rochette", "Vincent C", "Sunbather"
+  ]
+)
