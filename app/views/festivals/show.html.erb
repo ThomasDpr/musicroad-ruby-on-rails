@@ -1,8 +1,10 @@
 <div class="container festival-show-container">
-
+<div class="festival-top-inputs">
   <%= link_to festivals_path, class: "back-icon" do %>
     <%= svg_tag "icons/back" %>
   <% end %>
+    <%= link_to "Billetterie", @festival.url, class: "btn-secondary", target: "_blank" %>
+</div>
 
   <div class="festival-show-top">
 
@@ -15,7 +17,6 @@
       <div class="festival-title-container">
         <div class="festival-title-left">
           <h1 class="festival-title-text"><%= @festival.name %></h1>
-          <%= svg_tag "icons/ticket" %>
         </div>
         <%= svg_tag "icons/share" %>
       </div>
@@ -24,7 +25,7 @@
         <% @artists_name.each_with_index do |artist, index| %>
           <%= link_to festival_artist_path(params[:id], Artist.find_by(name: artist)), class: "festival-artist" do %>
             <%= image_tag "#{@artists_picture[index]}" %>
-            <h3 class="album-text"><%= artist %></h3>
+            <h3 class="album-text artist-text"><%= artist %></h3>
           <% end %>
         <% end %>
       </div>
@@ -33,15 +34,17 @@
 
       <div class="festival-show-info">
         <p class="festival-info-text"><%= @festival.location %></p>
-        <p class="festival-info-text"><%= @festival.start_date.strftime("%d-%m-%Y") %> - <%= @festival.start_date.strftime("%d-%m-%Y") %></p>
+        <p class="festival-info-text"><%= @festival.start_date.strftime("%d-%m-%Y") %> - <%= @festival.end_date.strftime("%d-%m-%Y") %></p>
       </div>
 
     </div>
 
   </div>
 
-  <div class="festival-show-bottom">
-    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Nantes+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/distance-area-calculator.html">area maps</a></iframe>
+  <div class="festival-show-bottom"
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
 

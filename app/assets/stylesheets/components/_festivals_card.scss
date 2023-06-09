@@ -2,7 +2,7 @@
 .card-festivals {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   grid-gap: 16px;
   padding: 16px;
   margin: 26px;
@@ -15,11 +15,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: grid;
       &:hover {
-        .card-festival-image {
-          height: 50%;
+        .card-festival-title {
+          transform: translateY(-360%);
+          transition: transform 0.3s ease-in-out;
         }
         .card-festival-content {
-          height: 50%;
+          transform: translateY(-100%);
+          transition: transform 0.3s ease-in-out;
         }
       }
 
@@ -32,7 +34,6 @@
       background-position: center;
       text-align: end;
       padding: 1rem;
-      transition: height 0.3s ease-in-out;
 
 
       .heart-icon {
@@ -47,6 +48,7 @@
 
       .card-festival-title{
         align-self: flex-start;
+        transition: transform 0.3s ease-in-out;
           h2 {
             margin: 0;
             color: #fff;
@@ -63,7 +65,7 @@
       position: relative;
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem;
-      transition: height 0.3s ease-in-out;
+      transition: transform 0.3s ease-in-out;
 
       .card-festival-bottom {
         display: flex;
@@ -74,7 +76,7 @@
           color: #559C5C;
           font-family: 'Poppins', sans-serif;
           font-weight: 700;
-          font-size: 17px;
+          font-size: 16px;
           margin-bottom: 0;
         }
 

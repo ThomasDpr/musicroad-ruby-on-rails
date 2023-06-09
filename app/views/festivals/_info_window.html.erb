@@ -1,0 +1,3 @@
+<h2><%= festival.name %></h2>
+<p><%= festival.start_date.strftime("%d/%m/%Y") %> - <%= festival.end_date.strftime("%d/%m/%Y") %></p>
+<%= link_to "Voir plus", festival_path(festival) %>

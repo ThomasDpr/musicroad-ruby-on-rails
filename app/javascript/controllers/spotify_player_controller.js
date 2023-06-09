@@ -20,6 +20,10 @@ export default class extends Controller {
     }, 100);
   }
 
+  disconnect() {
+    this.audio.pause();
+  }
+
   play_pause(event) {
     if (this.audio.paused) {
       this.#playMusic();
@@ -75,7 +79,9 @@ export default class extends Controller {
   }
 
   #playMusic() {
-    this.audio.src = this.playlist[this.index];
+    if (this.audio.src !== this.playlist[this.index] ) {
+      this.audio.src = this.playlist[this.index];
+    }
     this.audio.play();
     this.trackNameTarget.innerText = this.trackName[this.index];
     this.trackImageTarget.src = this.trackImage[this.index];
