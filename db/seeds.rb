@@ -6,7 +6,7 @@ Festival.destroy_all
 User.destroy_all
 
 
-def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names)
+def create_festival(name, location, description, start_date, photo_path, end_date, url, artist_names)
   puts "Creating festival: #{name}..."
   festival = Festival.create!(
     name: name,
@@ -17,7 +17,7 @@ def create_festival(name, location, description, start_date, image_path, end_dat
     url: url
   )
 
-  file = File.open(Rails.root.join(image_path))
+  file = File.open(Rails.root.join(photo_path))
   festival.photo.attach(io: file, filename: 'image.jpg', content_type: 'image/jpg')
   festival.save!
 
@@ -210,10 +210,6 @@ musicalarue = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
-
 retro_c_trop = create_festival(
   'Retro C Trop',
   'Chateau De Tilloloy, 80700 Tilloloy',
@@ -229,9 +225,7 @@ retro_c_trop = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 festival_de_nimes = create_festival(
   'Festival De Nimes',
@@ -250,9 +244,7 @@ festival_de_nimes = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 les_nuits_de_fourviere = create_festival(
   'Les Nuits De Fourviere',
@@ -269,9 +261,7 @@ les_nuits_de_fourviere = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 festival_de_trelaze = create_festival(
   'Festival De Trelaze',
@@ -306,9 +296,7 @@ festival_de_trelaze = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 solidays = create_festival(
   'Solidays',
@@ -325,9 +313,7 @@ solidays = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 festival_des_vieilles_charrues = create_festival(
   'Festival des Vieilles Charrues',
@@ -346,9 +332,7 @@ festival_des_vieilles_charrues = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 
 la_nuit_de_l_erdre = create_festival(
@@ -366,9 +350,7 @@ la_nuit_de_l_erdre = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 hellfest = create_festival(
   'Hellfest',
@@ -405,9 +387,7 @@ hellfest = create_festival(
   ]
 )
 
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
+
 
 les_francofolies_de_la_rochelle = create_festival(
   'Les Francofolies de la Rochelle',
@@ -430,7 +410,3 @@ les_francofolies_de_la_rochelle = create_festival(
     "Jeanne Rochette", "Vincent C", "Sunbather"
   ]
 )
-
-  file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
-  festival.save!
