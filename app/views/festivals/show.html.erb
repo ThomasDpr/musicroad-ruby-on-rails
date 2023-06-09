@@ -1,8 +1,10 @@
 <div class="container festival-show-container">
-
+<div class="festival-top-inputs">
   <%= link_to festivals_path, class: "back-icon" do %>
     <%= svg_tag "icons/back" %>
   <% end %>
+    <%= link_to "Billetterie", new_user_session_path, class: "btn-secondary" %>
+</div>
 
   <div class="festival-show-top">
 
