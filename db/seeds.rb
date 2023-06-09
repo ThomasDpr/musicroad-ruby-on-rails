@@ -193,7 +193,7 @@ musicalarue = create_festival(
   'Luxey (40)',
   'Musicalarue est un festival de musique qui se déroule chaque année à Luxey',
   '28/07/2023',
-  'db/images_festivals/musicalarue.jpg',
+  'db/images_festivals/festival-card-bg.jpg',
   [
     'ODEZENNE', 'BIGA RANX', 'JAIN', 'HUBERT FELIX THIEFAINE - Replugged', 'WAX TAILOR', 'MARC LAVOINE',
     'BCUC (Bantu Continua Uhuru Consciousness)', 'SILMARILS', 'EMILIE SIMON', 'OUAI STEPHANE', 'LABESS',
@@ -213,7 +213,7 @@ retro_c_trop = create_festival(
   'Tilloloy (80)',
   "Retro mais toujours dans le vent, ces groupes et artistes qui ont déjà 20, 30, 40 ou même 50 ans de carrière. Alors si vous aimé le rock et la pop intemporelle, rendez-vous le vendredi 23 et le dimanche 25 juin 2023 dans le parc du château de Tilloloy, dans la Somme.",
   '23/06/2023',
-  'db/images_festivals/retro-c-trop.jpg',
+  'db/images_festivals/festival-card-bg.jpg',
   [
     'LOUIS BERTIGNAC', 'LARKIN POE', 'CHRIS ISAAK', 'CANNED HEAT', 'CARAVAN',
     'TEXAS', 'BLANKASS', 'BARCLAY JAMES HARVEST', 'LEVEL 42', 'UUHAI', 'LENE LOVICH',
@@ -227,7 +227,7 @@ festival_de_nimes = create_festival(
   "Le Festival de Nîmes se déroule depuis 1997 au sein des Arènes de Nîmes. Dans ce monument historique, témoin du passage de l'empire romain, des artistes français et internationaux se produisent chaque été. Stevie Wonder, Muse, Metallica, Pharrell Williams, Johnny Hallyday, Michel Polnaref ou encore Stromae, autant de grands artistes qui ont laissé leur trace à Nïmes.
   Un festival devenu incontournable dans le calendrier des festivaliers chaque été.",
   '23/06/2023',
-  'db/images_festivals/festival-de-nimes.jpg',
+  'db/images_festivals/festival-card-bg.jpg',
   [
     'DAMSO', 'M. POKORA', 'JENIFER', 'SIMPLY RED', 'SELAH SUE', 'SLIPKNOT', 'SOPRANO', 'FLORENT PAGNY',
     'ZAZIE', 'SAEZ', 'GOJIRA', 'THE BLACK KEYS', 'PLACEBO', 'MICHEL POLNAREFF', 'STARS 80 ENCORE !',
@@ -241,7 +241,7 @@ les_nuits_de_fourviere = create_festival(
   'Lyon (69)',
   "Les Nuits de Fourvière est un festival de musique et de théâtre qui se déroule chaque année à Lyon. Il se déroule dans le théâtre antique de Fourvière, un lieu classé au patrimoine mondial de l'UNESCO. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
   '07/06/2023',
-  'db/images_festivals/les-nuits-de-fourviere.jpg',
+  'db/images_festivals/festival-card-bg.jpg',
   [
     'CATHERINE RINGER', 'ORCHESTRE DE L\'OPERA DE LYON', 'BIRELI LAGRENE', 'SYLVAIN LUC', 'VINICIO CAPOSSELA', 'BARO D\'EVEL', 'UNSTILL LIFE', 'MICHEL POLNAREFF',
     'DISIZ', 'ALOÏSE SAUVAGE', 'BERNARD LAVILLIERS', 'SIMPLY RED', 'THE WHITE  ROSE OF ATHENS', 'BOYS BOYS BOYS', 'ANDRE MINVIELLE', 'ALT-J', 'THE BLACK KEYS', 'STAR FEMININE BAND', 'QUEENS OF THE STONE AGE', "BENJAMIN BIOLAY", 'ROBIN MICKELLE',
@@ -254,7 +254,7 @@ festival_de_trelaze = create_festival(
   'Trelaze (49)',
   "Le Festival de Trélazé est un festival de musique qui se déroule chaque année à Trélazé, dans le Maine-et-Loire. Il se déroule dans le parc du Vissoir, un lieu verdoyant et arboré. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
   '21/06/2023',
-  'db/images_festivals/festival-de-trelaze.jpg',
+  'db/images_festivals/festival-card-bg.jpg',
   [
     "IMAGINATION FEAT. LEEE JOHN",
     "SHEILA",
@@ -285,7 +285,7 @@ solidays = create_festival(
   'Paris (75)',
   "Solidays est un festival de musique et de solidarité qui se déroule chaque année à Paris. Il se déroule dans l'hippodrome de Longchamp, un lieu verdoyant et arboré. Le festival propose une programmation éclectique, allant de la musique classique au rock en passant par le théâtre, la danse et le cirque.",
   '23/06/2023',
-  'db/images_festivals/solidays.jpg',
+  'db/images_festivals/festival-card-bg.jpg',
   [
     'TIAKOLA', 'JULIETTE ARMANET', 'LUIDJI', 'SCH', 'SOFIANE PAMART', 'JAIN', 'DJADJA & DINAZ', 'ASCENDANT VIERGE', 'NAAMAN', 'ADE', 'IRENE DRESEL', 'JULIEN GRANEL', 'KERCHAK', 'ZAOUI', 'SALUT C\'EST COOL', 'LEWIS OFMAN', 'KIDS RETURN', 'ANETHA', 'MARABOUTAGE', 'SAMA ABDULHADI', 'KIDDY SMILE', 'EARTHGANG', 'SHLØMO (SCHLOMO)', 'BUG DE L\'AN 2000',
     'ZAHO DE SAGAZAN', 'JOSMAN', 'BIGFLO ET OLI', 'JOK\'AIR', 'ZIAK', 'FAADA FREDDY', 'MIEL DE MONTAGNE', 'VLADIMIR CAUCHEMAR', 'MERYL', 'KALIKA', 'HERVE', 'HYPHEN HYPHEN', 'KUNGS', 'BILLX', 'MANDRAGORA', 'PAROV STELAR', 'ROLAND CRISTAL', 'SAINT LEVANT', 'J. BALVIN', 'MR OIZO',
