@@ -3,7 +3,7 @@
   <%= link_to festivals_path, class: "back-icon" do %>
     <%= svg_tag "icons/back" %>
   <% end %>
-    <%= link_to "Billetterie", new_user_session_path, class: "btn-secondary" %>
+    <%= link_to "Billetterie", @festival.url, class: "btn-secondary", target: "_blank" %>
 </div>
 
   <div class="festival-show-top">
@@ -17,7 +17,6 @@
       <div class="festival-title-container">
         <div class="festival-title-left">
           <h1 class="festival-title-text"><%= @festival.name %></h1>
-          <%= svg_tag "icons/ticket" %>
         </div>
         <%= svg_tag "icons/share" %>
       </div>
@@ -26,7 +25,7 @@
         <% @artists_name.each_with_index do |artist, index| %>
           <%= link_to festival_artist_path(params[:id], Artist.find_by(name: artist)), class: "festival-artist" do %>
             <%= image_tag "#{@artists_picture[index]}" %>
-            <h3 class="album-text"><%= artist %></h3>
+            <h3 class="album-text artist-text"><%= artist %></h3>
           <% end %>
         <% end %>
       </div>
@@ -35,7 +34,7 @@
 
       <div class="festival-show-info">
         <p class="festival-info-text"><%= @festival.location %></p>
-        <p class="festival-info-text"><%= @festival.start_date.strftime("%d-%m-%Y") %> - <%= @festival.start_date.strftime("%d-%m-%Y") %></p>
+        <p class="festival-info-text"><%= @festival.start_date.strftime("%d-%m-%Y") %> - <%= @festival.end_date.strftime("%d-%m-%Y") %></p>
       </div>
 
     </div>
