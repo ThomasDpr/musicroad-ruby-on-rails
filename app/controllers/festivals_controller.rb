@@ -11,7 +11,8 @@ class FestivalsController < ApplicationController
     @markers = @festivals.geocoded.map do |festival|
       {
         lat: festival.latitude,
-        lng: festival.longitude
+        lng: festival.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { festival: festival })
       }
     end
   end
@@ -21,6 +22,7 @@ class FestivalsController < ApplicationController
     @artists_name = @festival.artists.first(4).map(&:name)
     @artists_picture = @artists_name.map { |artist| RSpotify::Artist.search(artist).first.images.first["url"] }
 
-    @marker = { lat: @festival.latitude, lng: @festival.longitude }
+    @marker = { lat: @festival.latitude, lng: @festival.longitude,
+                info_window_html: render_to_string(partial: "info_window", locals: { festival: @festival }) }
   end
 end
