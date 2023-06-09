@@ -18,7 +18,7 @@ def create_festival(name, location, description, start_date, image_path, end_dat
   )
 
   file = File.open(Rails.root.join(image_path))
-  festival.photo.attach(io: file, filename: 'image.jpg', content_type: 'image/jpg')
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
   festival.save!
 
   puts "#{name} created !"
@@ -210,6 +210,10 @@ musicalarue = create_festival(
   ]
 )
 
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
+
 retro_c_trop = create_festival(
   'Retro C Trop',
   'Chateau De Tilloloy, 80700 Tilloloy',
@@ -224,6 +228,10 @@ retro_c_trop = create_festival(
     'MIKA', 'IZIA', 'EDGAR (Edgär)'
   ]
 )
+
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
 
 festival_de_nimes = create_festival(
   'Festival De Nimes',
@@ -242,6 +250,10 @@ festival_de_nimes = create_festival(
   ]
 )
 
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
+
 les_nuits_de_fourviere = create_festival(
   'Les Nuits De Fourviere',
   '6 rue de l’Antiquaille, 69005 Lyon',
@@ -256,6 +268,10 @@ les_nuits_de_fourviere = create_festival(
     'ANTIBALAS', 'ALICE RUSSELL', 'ZAZIE', 'GASPA CLAUS', 'PEDRO SOLER', 'INES BACAN', 'OMAR RAJEH', 'SIGUR ROS', 'DELUXE', 'ISABELLE ADJANI', 'IMANY', 'SOUAD MASSI', 'TAMINO', 'JAN VERSTRAETEN', 'IREN DRESEL', 'FRENCH 79', 'CITRON SUCRE', 'THE BLAZE', 'POMME', 'GHOSTLY KISSES', 'JEANNE ADDED', 'KUMBIA BORUKA', 'LILA DOWNS', 'SON ROMPE PERA'
   ]
 )
+
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
 
 festival_de_trelaze = create_festival(
   'Festival De Trelaze',
@@ -290,6 +306,10 @@ festival_de_trelaze = create_festival(
   ]
 )
 
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
+
 solidays = create_festival(
   'Solidays',
   'Hippodrome de Longchamp, 75000 Paris',
@@ -304,6 +324,10 @@ solidays = create_festival(
     'ZOLA', 'SHAKA PONK', 'PIERRE DE MAERE', 'DELUXE', 'ANGELE', 'LA FEMME', 'HAMZA', 'FAVE', 'YOUV DEE', 'REMA', 'OETE', 'GWENDOLINE', 'CERRONE', 'CHRONOLOGIC', 'SHYGIRL'
   ]
 )
+
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
 
 festival_des_vieilles_charrues = create_festival(
   'Festival des Vieilles Charrues',
@@ -322,6 +346,10 @@ festival_des_vieilles_charrues = create_festival(
   ]
 )
 
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
+
 
 la_nuit_de_l_erdre = create_festival(
   'La nuit de l\'Erdre',
@@ -337,6 +365,10 @@ la_nuit_de_l_erdre = create_festival(
     'Royal Republic', 'Rag\'n\'bone Man', 'Dirtyphonics', 'Coach Party', 'Foals', 'Green Line Marching Band', 'Dynamite Shakers'
   ]
 )
+
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
 
 hellfest = create_festival(
   'Hellfest',
@@ -373,6 +405,10 @@ hellfest = create_festival(
   ]
 )
 
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
+
 les_francofolies_de_la_rochelle = create_festival(
   'Les Francofolies de la Rochelle',
   'Esp. Saint-Jean d\'Acre, 17000 La Rochelle',
@@ -394,3 +430,7 @@ les_francofolies_de_la_rochelle = create_festival(
     "Jeanne Rochette", "Vincent C", "Sunbather"
   ]
 )
+
+  file = File.open(Rails.root.join(photo_path))
+  festival.photo.attach(io: file, filename: 'festival.jpg', content_type: 'image/jpg')
+  festival.save!
