@@ -7,11 +7,20 @@ class FestivalsController < ApplicationController
   def index
     @festivals = Festival.all
     params[:query].present? ? @festivals = @festivals.where("name ILIKE ?", "%#{params[:query]}%") : @festivals
+
+    @markers = @festivals.geocoded.map do |festival|
+      {
+        lat: festival.latitude,
+        lng: festival.longitude
+      }
+    end
   end
 
   def show
     @festival = Festival.find(params[:id])
     @artists_name = @festival.artists.first(4).map(&:name)
     @artists_picture = @artists_name.map { |artist| RSpotify::Artist.search(artist).first.images.first["url"] }
+
+    @marker = { lat: @festival.latitude, lng: @festival.longitude }
   end
 end
