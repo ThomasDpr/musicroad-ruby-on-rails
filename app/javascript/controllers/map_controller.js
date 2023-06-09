@@ -27,16 +27,20 @@ export default class extends Controller {
   }
 
   #addMarkerToMap() {
-      new mapboxgl.Marker()
-        .setLngLat([ this.markerValue.lng, this.markerValue.lat ])
-        .addTo(this.map)
+    const popup = new mapboxgl.Popup().setHTML(this.markerValue.info_window_html)
+    new mapboxgl.Marker()
+      .setLngLat([ this.markerValue.lng, this.markerValue.lat ])
+      .addTo(this.map)
+      .setPopup(popup)
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
+        .setPopup(popup)
     })
   }
 
