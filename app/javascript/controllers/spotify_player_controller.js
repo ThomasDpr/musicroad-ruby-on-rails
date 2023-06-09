@@ -20,6 +20,10 @@ export default class extends Controller {
     }, 100);
   }
 
+  disconnect() {
+    this.audio.pause();
+  }
+
   play_pause(event) {
     if (this.audio.paused) {
       this.#playMusic();
