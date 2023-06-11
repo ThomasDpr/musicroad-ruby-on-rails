@@ -1,13 +1,43 @@
+.chatroom {
+  align-items: baseline;
+}
 .container-chatroom {
   background-color: #327338;
   display : grid;
   color: white;
-  border-radius: 25px;
+  border-radius: 10px ;
   margin: 10%;
+  grid-template-columns: 1fr;
+  width: 200px;
+  text-align: center;
 }
 
 .chatrooms-city h2 {
   background-color: white;
   display: column;
   color: black;
+  justify-self: auto;
+}
+
+.chatrooms-city {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.chat-box {
+  display: flex;
+  padding: 20px;
+  border: #327338;
+  width:  600px;
+
+
+}
+
+.messages{
+  display: grid;
+  background-color: white;
+  align-items: flex-end;
+  margin: auto;
+  border-radius: 10px;
+  border-width: 50px;
+
 }
