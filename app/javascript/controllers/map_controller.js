@@ -15,7 +15,6 @@ export default class extends Controller {
       container: this.element,
       // style: "mapbox://styles/mapbox/outdoors-v12",
       style: 'mapbox://styles/mapbox/satellite-streets-v11',
-
     })
 
     this.map.dragPan.disable();
