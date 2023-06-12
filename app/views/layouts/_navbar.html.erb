@@ -1,54 +1,41 @@
 <nav class="nav-container">
-
   <div class="nav">
-
     <div class="nav-left">
       <%= link_to root_path, class: "logo" do %>
         <p class="first-logo-text">M<span class="second-logo-text">R</span></p>
       <% end %>
     </div>
-
     <% unless current_page?(root_path) %>
       <div class="nav-center">
-
-      <%= form_with url: festivals_path, method: :get, class: "search-bar-container" do %>
-
-        <button type="submit" class="search-bar-icon">
-          <%= svg_tag "icons/search" %>
-        </button>
-
-        <%= text_field_tag :query,
+        <%= form_with url: festivals_path, method: :get, class: "search-bar-container" do %>
+          <button type="submit" class="search-bar-icon">
+            <%= svg_tag "icons/search" %>
+          </button>
+          <%= text_field_tag :query,
               params[:query],
               class: "search-bar-input",
               placeholder: "Rechercher un Festival, Localisation..."
           %>
-
-      <% end %>
-
+        <% end %>
       </div>
     <% end %>
-
     <div class="nav-right">
       <% if user_signed_in? %>
-
         <%= link_to root_path, class: "nav-link message" do %>
           <%= svg_tag "icons/message" %>
         <% end %>
 
         <%= link_to favorites_path, class: "nav-link favorite" do %>
           <%= svg_tag "icons/bookmark" %>
-        <% end %>
 
+        <% end %>
         <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link logout" do %>
           <%= svg_tag "icons/log-out" %>
         <% end %>
-
       <% else %>
         <%= link_to "S'inscrire", new_user_registration_path, class: "btn-primary" %>
         <%= link_to "Se connecter", new_user_session_path, class: "btn-secondary" %>
       <% end %>
     </div>
-
   </div>
-
 </nav>

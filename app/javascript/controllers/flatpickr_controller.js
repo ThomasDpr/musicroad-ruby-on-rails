@@ -5,7 +5,7 @@ import { French } from "flatpickr/dist/l10n/fr.js"
 export default class extends Controller {
   connect() {
     flatpickr(this.element, {
-      // locale: French,
+      locale: French,
       mode: "range",
       dateFormat: "Y-m-d",
       onChange: this.onChange.bind(this)
