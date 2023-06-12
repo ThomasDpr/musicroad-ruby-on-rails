@@ -27,17 +27,25 @@
 
 
     .top{
+      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
 
       svg{
+        position: absolute;
+        right: 0px;
+        top: 0px;
         height: 34px;
         width: 34px;
         color: #fff;
       }
     }
-
+    .separator{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
     .bottom{
       display: flex;
       justify-content: space-between;
