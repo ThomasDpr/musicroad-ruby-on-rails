@@ -11,6 +11,7 @@ class FestivalsController < ApplicationController
     params[:query].present? ? @festivals = @festivals.where(sql_subquery, query: "%#{params[:query]}%") : @festivals
 
     if params[:festival_filter]
+      # raise
       start_time = params[:festival_filter][:start_time].to_date
       end_time = params[:festival_filter][:end_time].to_date
       @festivals = @festivals.where(start_date: start_time..end_time)
