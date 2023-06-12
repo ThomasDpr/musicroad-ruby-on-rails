@@ -76,3 +76,33 @@ a{
   font-weight: 700;
   font-size: 17px;
 }
+.sub-title{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  margin-bottom: 15px;
+
+  span{
+    font-weight: 200;
+  }
+}
+
+.favorite-title-text{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+.text-location{
+  color: $secondary-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+.date-text{
+  color: rgba($color: white, $alpha: .8);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}

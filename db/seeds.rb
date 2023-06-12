@@ -217,7 +217,7 @@ musicalarue.save!
 
 retro_c_trop = create_festival(
   'Retro C Trop',
-  'Chateau De Tilloloy, 80700 Tilloloy',
+  ' Rue de Flandre, 80700 Tilloloy',
   "Retro mais toujours dans le vent, ces groupes et artistes qui ont déjà 20, 30, 40 ou même 50 ans de carrière. Alors si vous aimé le rock et la pop intemporelle, rendez-vous le vendredi 23 et le dimanche 25 juin 2023 dans le parc du château de Tilloloy, dans la Somme.",
   Date.new(2023, 6, 23 ),
   'db/images_festivals/festival-2.jpg',
