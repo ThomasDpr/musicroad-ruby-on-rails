@@ -28,7 +28,7 @@
         <div class="festival-title-left">
           <h1 class="festival-title-text"><%= @festival.name %></h1>
         </div>
-        <%= svg_tag "icons/share" %>
+        <%= svg_tag "icons/share", "data-controller": "copy-to-clipboard", "data-action": "click->copy-to-clipboard#copy"%>
       </div>
 
       <div class="festival-artists-container">

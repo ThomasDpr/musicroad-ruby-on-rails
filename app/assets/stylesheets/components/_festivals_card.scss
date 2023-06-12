@@ -10,18 +10,19 @@
   border-radius: 10px;
 
   .card-festival {
+    position: relative;
+    height: 225px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: grid;
       &:hover {
-        .card-festival-title {
-          transform: translateY(-360%);
-          transition: transform 0.3s ease-in-out;
+        .card-festival-title{
+          transform: translateY(-100px);
         }
+
         .card-festival-content {
           transform: translateY(-100%);
-          transition: transform 0.3s ease-in-out;
         }
       }
 
@@ -47,25 +48,24 @@
       }
 
       .card-festival-title{
-        align-self: flex-start;
         transition: transform 0.3s ease-in-out;
-          h2 {
+        h2 {
             margin: 0;
             color: #fff;
             text-align: left;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 20px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           }
       }
     }
 
     .card-festival-content {
-      position: relative;
       background: rgba(0, 0, 0, 0.5);
-      padding: 1rem;
       transition: transform 0.3s ease-in-out;
+      padding: 1em;
+      height: 50%;
+
 
       .card-festival-bottom {
         display: flex;
