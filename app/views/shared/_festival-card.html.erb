@@ -4,7 +4,11 @@
       <%= link_to festival_path(festival) do %>
         <div class="card-festival-image" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path festival.photo.key %>')">
           <button class="heart-icon">
-            <%= svg_tag "icons/heart" %>
+            <% if !user_signed_in? || Favorite.find_by(user: current_user, festival: festival).nil? %>
+              <%= svg_tag "icons/heart" %>
+            <% else %>
+              <%= svg_tag "icons/heart", class: "liked" %>
+            <% end %>
           </button>
           <div class="card-festival-title">
             <h2><%= festival.name.upcase %></h2>

@@ -26,11 +26,28 @@
 
       position: relative;
 
-      svg{
+      .heart-icon{
         position: absolute;
         right: 15px;
         top: 15px;
         color: white;
+        width: 35px;
+        height: 35px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        svg{
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .liked{
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: white;
+        fill: white;
         width: 35px;
         height: 35px;
       }
@@ -125,4 +142,8 @@
   text-overflow: ellipsis;
   max-width: 8ch;
   white-space: nowrap;
+}
+
+.liked{
+  fill: white;
 }

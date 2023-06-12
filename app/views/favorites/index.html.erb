@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="sub-title">M<span>es favoris</span></h1>
+  <div class="favorite-card">
+
+    <% @favorites.each do |favorite| %>
+    <div class="fav-card">
+      <div class="fav-left">
+        <%= cl_image_tag favorite.festival.photo.key %>
+      </div>
+
+      <div class="fav-right">
+        <div class="separator">
+          <div class="top">
+            <h1 class="favorite-title-text"><%= favorite.festival.name %></h1>
+            <%= svg_tag "icons/heart", class: "liked" %>
+          </div>
+          <div class="middle">
+            <h3 class="text-location"><%= favorite.festival.location %></h3>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <p class="date-text"><%= l favorite.festival.start_date, format: :long %> - <%= l favorite.festival.end_date, format: :long %></p>
+
+          <div class="icons">
+            <%= svg_tag "icons/ticket" %>
+            <%= svg_tag "icons/share" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+  </div>
+
+
+</div>

@@ -9,7 +9,15 @@
   <div class="festival-show-top">
 
     <div class="festival-show-left" style="background-image: url('<%= cl_image_path @festival.photo.key %>')">
-    <%= svg_tag "icons/heart" %>
+      <% if  Favorite.find_by(user: current_user, festival: @festival).nil? %>
+        <%= simple_form_for [@festival, @favorite] do |f| %>
+          <button type="submit" class="heart-icon">
+            <%= svg_tag "icons/heart" %>
+          </button>
+        <% end %>
+      <% else %>
+        <%= svg_tag "icons/heart", class: "liked" %>
+      <% end %>
     </div>
 
     <div class="festival-show-right">
