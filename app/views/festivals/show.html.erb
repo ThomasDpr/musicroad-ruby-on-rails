@@ -9,14 +9,16 @@
   <div class="festival-show-top">
 
     <div class="festival-show-left" style="background-image: url('<%= cl_image_path @festival.photo.key %>')">
-      <% if  Favorite.find_by(user: current_user, festival: @festival).nil? %>
+      <% if  !user_signed_in? || Favorite.find_by(user: current_user, festival: @festival).nil? %>
         <%= simple_form_for [@festival, @favorite] do |f| %>
           <button type="submit" class="heart-icon">
             <%= svg_tag "icons/heart" %>
           </button>
         <% end %>
       <% else %>
-        <%= svg_tag "icons/heart", class: "liked" %>
+        <%= link_to favorite_path(@favorite), data:{ turbo_method: :delete }, class: "heart-icon" do %>
+          <%= svg_tag "icons/heart", class: "heart-liked" %>
+        <% end %>
       <% end %>
     </div>
 
