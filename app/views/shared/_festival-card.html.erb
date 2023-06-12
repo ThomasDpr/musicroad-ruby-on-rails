@@ -1,3 +1,14 @@
+
+<%= simple_form_for :festival_filter, url: festivals_path, method: :get, data: { controller: 'flatpickr' } do |f| %>
+  <%= f.input :start_time, as: :hidden %>
+  <%= f.input :end_time, as: :hidden %>
+  <input type="text" data-target="flatpickr">
+  <%= f.submit 'Filter festivals' %>
+<% end %>
+
+
+
+
 <div class="card-festivals">
   <% @festivals.each do |festival| %>
     <div class="card-festival">

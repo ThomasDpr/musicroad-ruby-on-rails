@@ -6,7 +6,14 @@ class FestivalsController < ApplicationController
 
   def index
     @festivals = Festival.all
-    sql_subquery = "name ILIKE :query OR location ILIKE :query"
+
+    if params[:festival_filter]
+      start_time = params[:festival_filter][:start_time]
+      end_time = params[:festival_filter][:end_time]
+      @festivals = @festivals.where(start_date: start_time..end_time)
+    end
+
+    sql_subquery = "name ILIKE query OR location ILIKE :query"
     params[:query].present? ? @festivals = @festivals.where(sql_subquery, query: "%#{params[:query]}%") : @festivals
 
     @markers = @festivals.geocoded.map do |festival|
