@@ -7,16 +7,29 @@
     </div>
     <% unless current_page?(root_path) %>
       <div class="nav-center">
-        <%= form_with url: festivals_path, method: :get, class: "search-bar-container" do %>
-          <button type="submit" class="search-bar-icon">
-            <%= svg_tag "icons/search" %>
-          </button>
-          <%= text_field_tag :query,
+        <div class="search-with-date">
+          <%= simple_form_for :festival_filter, url: festivals_path, method: :get, html: { class: "search-bar-container" }   do |f| %>
+            <button type="submit" class="search-bar-icon">
+              <%= svg_tag "icons/search" %>
+            </button>
+            <%= text_field_tag :query,
               params[:query],
               class: "search-bar-input",
               placeholder: "Rechercher un Festival, Localisation..."
           %>
-        <% end %>
+          <% end %>
+
+          <%= simple_form_for :festival_filter, url: festivals_path, method: :get, html: { class: "search-bar-container" }   do |f| %>
+          <button type="submit" class="search-bar-icon">
+            <%= svg_tag "icons/calendar", class: "calendar-icon" %>
+          </button>
+            <div class="flatpickr_dates" data-controller="flatpickr">
+            <%= f.input :start_time, as: :hidden %>
+            <%= f.input :end_time, as: :hidden  %>
+            <input type="text" data-flatpickr-target="flatpicker" class= "date-range search-bar-input " name="flatpickr" placeholder="Filtrer par dates">
+          </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
     <div class="nav-right">
@@ -24,10 +37,8 @@
         <%= link_to root_path, class: "nav-link message" do %>
           <%= svg_tag "icons/message" %>
         <% end %>
-
         <%= link_to favorites_path, class: "nav-link favorite" do %>
           <%= svg_tag "icons/bookmark" %>
-
         <% end %>
         <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link logout" do %>
           <%= svg_tag "icons/log-out" %>
