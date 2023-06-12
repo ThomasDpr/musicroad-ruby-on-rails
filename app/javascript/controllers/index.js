@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -12,3 +15,4 @@ application.register("map", MapController)
 
 import SpotifyPlayerController from "./spotify_player_controller"
 application.register("spotify-player", SpotifyPlayerController)
+

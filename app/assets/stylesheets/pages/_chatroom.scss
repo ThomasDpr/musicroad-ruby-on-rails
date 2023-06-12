@@ -1,51 +1,63 @@
-.chatroom {
-  align-items: baseline;
-  grid-template-columns: 2fr 4fr;
-  display: grid;
-  padding: 10%;
+.chatroom H1{
+  color: white;
+  padding: 3px;
+}
+.chat-box-general{
+  align-items: flex-start;
+  // background-color: white;
+  display: flex;
+
+  .chat-box {
+    display: flex;
+    padding:20px;
+    border: #327338;
+    background-color: white;
+  }
 
 }
 .container-chatroom {
   background-color: #327338;
   display : grid;
   color: white;
-  border-radius: 10px ;
-  margin: 10%;
-  grid-template-columns: 1fr;
-  width: 200px;
-  text-align: center;
-}
+  border-radius: 10px;
+  justify-content: center;
 
-.chatrooms-city h2 {
-  background-color: white;
-  display: column;
-  color: black;
-  justify-self: auto;
 }
-
 .chatrooms-city {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.chat-box {
-  display: flex;
-  padding: 20px;
-  border: #327338;
-  width:  600px;
+  background-color: white;
+  color: black;
+  text-align: center;
 
+  .chatrooms-city H1{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+  }
+
+  .chatrooms-city h2 {
+    display: column;
+    justify-self: auto;
+    padding-right: 40px;
+  }
 }
 
 .messages{
-  display: grid;
-  background-color: white;
-  align-items: flex-end;
-  margin: auto;
+  flex-grow: 1;
+  background-color: #3F3F3F;
   border-radius: 10px;
-  border-width: 50px;
   align-items:last baseline;
-  border: 0.5px;
-  height: 110px;
+  justify-content: flex-end;
+  margin :1rem;
+  border-radius: 10px;
 }
-.message{
-  margin-top: 0%;
+
+.inputs-message{
+  max-width: auto;
+}
+
+.messages H2{
+  color: white;
+  background-color: #327338;
+  border-radius: 10px 10px 0px 0px;
+  padding-left: 2.5%;
 }
