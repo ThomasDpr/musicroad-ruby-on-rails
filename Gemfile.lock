@@ -317,6 +317,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   geocoder
   httparty
+  i18n
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
