@@ -26,11 +26,28 @@
 
       position: relative;
 
-      svg{
+      .heart-icon{
         position: absolute;
         right: 15px;
         top: 15px;
         color: white;
+        width: 35px;
+        height: 35px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        svg{
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .liked{
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: white;
+        fill: white;
         width: 35px;
         height: 35px;
       }
@@ -105,4 +122,28 @@
       border-radius: 10px;
     }
   }
+}
+
+.index-festival-container {
+  display: flex;
+  max-width: 1280px;
+  margin: auto;
+  padding-inline: 5px;
+}
+
+.content-festival-left {
+  height: 100%;
+  width: 70%;
+  margin-top: 100px;
+}
+
+.artist-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 8ch;
+  white-space: nowrap;
+}
+
+.liked{
+  fill: white;
 }
