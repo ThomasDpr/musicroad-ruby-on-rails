@@ -18,7 +18,7 @@
             <% if !user_signed_in? || Favorite.find_by(user: current_user, festival: festival).nil? %>
               <%= svg_tag "icons/heart" %>
             <% else %>
-              <%= svg_tag "icons/heart", class: "liked" %>
+              <%= svg_tag "icons/heart", class: "heart-liked" %>
             <% end %>
           </button>
           <div class="card-festival-title">

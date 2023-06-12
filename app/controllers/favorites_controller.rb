@@ -14,4 +14,10 @@ class FavoritesController < ApplicationController
       render 'festivals/show'
     end
   end
+
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+    redirect_to festival_path(@favorite.festival), status: :see_other
+  end
 end
