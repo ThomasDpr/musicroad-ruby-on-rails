@@ -19,7 +19,8 @@
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    padding-block: 8px;
+    padding-block: 10px;
+    cursor: pointer;
 
     color: $main-text-color;
 
@@ -42,5 +43,24 @@
       height: 24px;
       width: 24px;
     }
+    .calendar-icon {
+      height: 20px;
+      width: 20px;
+    }
   }
+}
+
+.search-with-date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-range {
+  text-align: left;
+  max-width: 200px;
+}
+
+.flatpickr_dates {
+  width: 200px;
 }

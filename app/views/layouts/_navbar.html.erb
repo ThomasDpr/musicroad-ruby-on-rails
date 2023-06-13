@@ -1,38 +1,71 @@
 <nav class="nav-container">
   <div class="nav">
+
+    <!-- Section de gauche de la barre de navigation -->
     <div class="nav-left">
       <%= link_to root_path, class: "logo" do %>
         <p class="first-logo-text">M<span class="second-logo-text">R</span></p>
       <% end %>
     </div>
+
+    <!-- Si la page actuelle n'est pas la page d'accueil -->
     <% unless current_page?(root_path) %>
+
+      <!-- Section du centre de la barre de navigation -->
       <div class="nav-center">
-        <%= form_with url: festivals_path, method: :get, class: "search-bar-container" do %>
-          <button type="submit" class="search-bar-icon">
-            <%= svg_tag "icons/search" %>
-          </button>
-          <%= text_field_tag :query,
+
+        <!-- Barre de recherche avec le filtre de date -->
+        <div class="search-with-date">
+
+          <!-- Formulaire de recherche de festivals -->
+          <%= simple_form_for :festival_filter, url: festivals_path, method: :get, html: { class: "search-bar-container" } do |f| %>
+
+            <!-- Bouton d'envoi du formulaire de recherche -->
+            <button type="submit" class="search-bar-icon">
+              <%= svg_tag "icons/search" %>
+            </button>
+
+            <!-- Champ de recherche de texte -->
+            <%= text_field_tag :query,
               params[:query],
               class: "search-bar-input",
               placeholder: "Rechercher un Festival, Localisation..."
-          %>
-        <% end %>
+            %>
+
+            <!-- Bouton d'envoi du formulaire de recherche de date -->
+            <button type="submit" class="search-bar-icon">
+              <%= svg_tag "icons/calendar", class: "calendar-icon" %>
+            </button>
+
+            <!-- Input du champ de date avec flatpickr -->
+            <div class="flatpickr_dates" data-controller="flatpickr">
+              <%= f.input :start_time, as: :hidden %>
+              <%= f.input :end_time, as: :hidden  %>
+              <input type="text" data-flatpickr-target="flatpicker" class= "date-range search-bar-input " name="flatpickr" placeholder="Rechercher par dates" value="<%= "#{params[:festival_filter][:start_time]} au #{params[:festival_filter][:end_time]}" if params[:festival_filter] && params[:festival_filter][:start_time].present? && params[:festival_filter][:end_time].present? %>">
+            </div>
+
+          <% end %>
+        </div>
       </div>
     <% end %>
+
+    <!-- Section de droite de la barre de navigation -->
     <div class="nav-right">
+
+      <!-- Si l'utilisateur est connecté -->
       <% if user_signed_in? %>
         <%= link_to root_path, class: "nav-link message" do %>
           <%= svg_tag "icons/message" %>
         <% end %>
-
         <%= link_to favorites_path, class: "nav-link favorite" do %>
           <%= svg_tag "icons/bookmark" %>
-
         <% end %>
         <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link logout" do %>
           <%= svg_tag "icons/log-out" %>
         <% end %>
       <% else %>
+
+        <!-- Si l'utilisateur n'est pas connecté -->
         <%= link_to "S'inscrire", new_user_registration_path, class: "btn-primary" %>
         <%= link_to "Se connecter", new_user_session_path, class: "btn-secondary" %>
       <% end %>
