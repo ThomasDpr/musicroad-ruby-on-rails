@@ -1,4 +1,4 @@
 meta_name: "MusicRoad"
 meta_title: "MusicRoad - RoadMusic"
 meta_description: "Relevant description"
-meta_image: "background.png" # should exist in `app/assets/images/`
+meta_image: "og_image.png" # should exist in `app/assets/images/`
