@@ -42,14 +42,20 @@
   svg{
     height: 24px;
     width: 24px;
+    fill: transparent;
+    transition: fill 0.2s ease-in-out;
   }
 }
 
 .message:hover{
-  color: #1e90ff;
+  svg{
+    fill: white;
+  }
 }
 .favorite:hover{
-  color: #ff69b4;
+  svg{
+    fill: white;
+  }
 }
 .logout:hover{
   color: #ff0000;

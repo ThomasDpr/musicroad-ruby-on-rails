@@ -1,18 +1,23 @@
-
-<div class="index-festival-container">
-  <div class="content-festival-left">
-      <div class="index-festival-result-search">
-      <h1> <% if @festivals.count == 0 %>
-        Désolé, aucun résultat trouvé
-        <% elsif @festivals.count == 1 %>
-        <%= @festivals.count %> festival trouvé pour :
-        <%= params[:query] %>
-        <% else %>
-        <%= @festivals.count %> festivals trouvés
-        <% end %>
-      </h1>
+<div class="container">
+  <h1 class= "sub-title">
+    <% if params[:query].present? && params[:flatpickr].present? && @festivals.count > 0%>
+      R<span>ésultats</span> P<span>our</span> <span class="search"><%= params[:query] %> du <%= params[:flatpickr] %></span>
+    <% elsif params[:query].present? && @festivals.count > 0 %>
+      R<span>ésultats</span> P<span>our</span> <span class="search"><%= params[:query] %></span>
+    <% elsif params[:flatpickr].present? && @festivals.count > 0 %>
+      R<span>ésultats</span> P<span>our</span> <span class="search"><%= params[:flatpickr] %></span>
+    <% elsif @festivals.count > 0 %>
+      F<span>estivals</span> D<span>u</span> M<span>oment</span>
+    <% else %>
+      A<span>ucun</span> R<span>ésultat</span>
+    <% end %>
+  </h1>
+  <% if @festivals.count > 0 %>
+    <div class="index-festival-container">
+      <div class="content-festival-left">
+        <%= render "shared/festival-card" %>
+      </div>
+      <%= render "shared/map" %>
     </div>
-    <%= render "shared/festival-card" %>
-  </div>
-  <%= render "shared/map" %>
+  <% end %>
 </div>

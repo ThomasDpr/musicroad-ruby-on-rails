@@ -9,15 +9,12 @@
 // }
 
 #map-container {
-  height: calc(100vh - 110px);
-  margin-top: 129px;
+  height: calc(100vh - 90px);
   width: 30%;
   position: sticky;
   top: calc(58px + 15px);
   border-radius: 10px;
-  margin-bottom: 26px;
   // background-color: rgba(0, 0, 0, 0.5);
-  padding: 16px;
 }
 
 #map {
