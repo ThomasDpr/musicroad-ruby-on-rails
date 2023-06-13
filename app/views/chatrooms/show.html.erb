@@ -1,41 +1,60 @@
-<div class="container chatroom"
+<div class="container"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+
+  <h1 class="sub-title">C<span>hat</span>R<span>oom</span></h1>
+
   <div class="chatroom">
-    <h1>Chat</h1>
-    <div class="chat-box-general">
-      <div class="container-chatroom">
-        <div class="chatroom-title">
-          <h1><%= @chatroom.festival.name %></h1>
-        </div>
+
+    <div class="container-chatroom">
+      <div class="chatroom-title">
+        <h1 class="chatroom-title-text"><%= @chatroom.festival.name %></h1>
+      </div>
+      <div class="chatroom-city">
         <% @chatrooms.each do |chatroom| %>
-          <%= link_to chatroom_path(chatroom) do %>
-            <div class="chatrooms-city">
-              <h2><%= chatroom.city.name %></h2>
-            </div>
+          <% if request.fullpath[/\d{1,}$/] == chatroom.id.to_s %>
+            <%= link_to "#{chatroom.city.name}", chatroom_path(chatroom), class: "city-text active" %>
+          <% else %>
+            <%= link_to "#{chatroom.city.name}", chatroom_path(chatroom), class: "city-text" %>
           <% end %>
         <% end %>
       </div>
+    </div>
+
+
+
+    <div class="chatroom-content">
+      <h2 class="city-text"><%= @chatroom.city.name %></h2>
+
       <div class="messages" data-chatroom-subscription-target="messages">
-        <h2><%= @chatroom.city.name %></h2>
         <% @chatroom.messages.each do |message| %>
-          <div class="<%= message.sender?(current_user) ? 'message-row-right' : 'message-row-left' %>">
-            <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <div class="message">
+            <div class="<%= message.user == current_user ? 'send' : 'recived' %>">
               <%= render "messages/message", message: message %>
             </div>
           </div>
         <% end %>
       </div>
+
+
+
       <div class="chat-box">
         <%= simple_form_for [@chatroom, @message],
-           html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" } } do |f|%>
+          html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" } } do |f|%>
           <%= f.input :content,
+                as: :string,
                 label: false,
+                row: 1,
                 placeholder: "Ecrire un message..." %>
-          <%= f.submit "Envoyer" %>
+          <button type="submit" class="submit-icon">
+            <%= svg_tag "icons/send" %>
+          </button>
         <% end %>
       </div>
+
     </div>
+
   </div>
+
 </div>

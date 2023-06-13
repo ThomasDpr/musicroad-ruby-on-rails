@@ -1,67 +1,172 @@
-.chatroom H1{
-  color: white;
-  padding: 3px;
-}
-.chat-box-general{
-  align-items: flex-start;
-  // background-color: white;
+.chatroom{
   display: flex;
+  gap: 30px;
 
-  .chat-box {
+  .container-chatroom{
     display: flex;
-    padding:20px;
-    border: #327338;
-    background-color: white;
+    flex-direction: column;
+    background-color: rgba($color: #000000, $alpha: .5);
+    border-radius: 10px;
+    width: 300px;
+    height: fit-content;
+
+    .chatroom-title{
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      background-color: $container-background-color;
+      border-radius: 10px 10px 0 0;
+      padding: 5px 10px;
+    }
+
+    .chatroom-city{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .active{
+        background-color: rgba($color: $container-background-color, $alpha: .7);
+        color: white;
+      }
+    }
   }
 
-}
-.container-chatroom {
-  background-color: #327338;
-  display : grid;
-  color: white;
-  border-radius: 10px;
-  justify-content: center;
 
-}
-.chatrooms-city {
-  background-color: white;
-  color: black;
-  text-align: center;
+  .chatroom-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 375px);
+    width: calc(100% - 300px);
+    background-color: rgba($color: #000000, $alpha: .5);
 
-  .chatrooms-city H1{
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: white;
+    .city-text{
+      background-color: rgba($color: $container-background-color, $alpha: .7);
+    }
+
+    .messages{
+      width: 100%;
+      height: calc(100% - 50px);
+      overflow: hidden;
+      overflow-y: scroll;
+
+      padding: 15px;
+
+      .message{
+        display: flex;
+        margin-block: 10px;
+        font-family: 'Poppins', sans-serif;
+
+        img{
+          border-radius: 100%;
+          height: 50px;
+          width: 50px;
+          object-fit: cover;
+        }
+        .avatar{
+          display: flex;
+          gap: 5px;
+          align-items: end;
+          padding-bottom: 5px;
+        }
+
+        .send{
+          width: fit-content;
+          max-width: 55%;
+          color: white;
+
+          .message-content{
+            border-radius: 10px 10px 0 10px;
+            padding: 5px 10px;
+            background-color: $container-background-color;
+            text-align: end;
+            .time{
+              color: rgba($color: #fff, $alpha: .6);
+              text-align: end;
+            }
+          }
+          .avatar{
+            justify-content: end;
+          }
+
+        }
+        .recived{
+          width: fit-content;
+          max-width: 55%;
+          color: black;
+
+          .message-content{
+            border-radius: 10px 10px 10px 0;
+            padding: 5px 10px;
+            background-color: white;
+            .time{
+              color: rgba($color: #000, $alpha: .6);
+              text-align: end;
+            }
+          }
+          .avatar{
+            flex-direction: row-reverse;
+            justify-content: start;
+          }
+
+        }
+
+        strong{
+          color: white;
+          font-size: 18px;
+        }
+        .text-message{
+          font-size: 14px;
+          overflow-wrap: break-word;
+          margin-block: 10px;
+        }
+        .time{
+          font-size: 14px;
+        }
+      }
+      .message:has(.send) {
+        justify-content: flex-end;
+      }
+      .message:has(.recived) {
+        justify-content: flex-start;
+      }
+    }
+
+    .chat-box{
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 50px;
+
+      form{
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border-radius: 0 0 10px 10px;
+        width: 100%;
+
+        .message_content{
+          display: flex;
+          width: 100%;
+        }
+        input{
+          width: 100%;
+          height: min-content;
+          margin-left: 10px;
+          resize: none;
+          background: none;
+          border: none;
+
+          font-family: 'Poppins', sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          &:focus{
+            outline: none;
+          }
+        }
+      }
+    }
   }
-
-  .chatrooms-city h2 {
-    display: column;
-    justify-self: auto;
-    padding-right: 40px;
-  }
-}
-
-.messages{
-  flex-grow: 1;
-  background-color: #3F3F3F;
-  border-radius: 10px;
-  align-items:last baseline;
-  justify-content: flex-end;
-  margin :1rem;
-  border-radius: 10px;
-}
-
-.inputs-message{
-  max-width: auto;
-}
-
-.messages H2{
-  color: white;
-  background-color: #327338;
-  border-radius: 10px 10px 0px 0px;
-  padding-left: 2.5%;
-}
-
-.btn {
-  btn-primary: mb-3
 }
