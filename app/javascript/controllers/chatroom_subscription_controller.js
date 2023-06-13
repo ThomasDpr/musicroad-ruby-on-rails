@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 export default class extends Controller {
+
   static values = { chatroomId: Number, currentUserId: Number }
   static targets = ["messages"]
   connect() {
@@ -18,6 +19,7 @@ export default class extends Controller {
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
       this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
    }
+
    #buildMessageElement(currentUserIsSender, message) {
     return `
       <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
@@ -27,6 +29,7 @@ export default class extends Controller {
       </div>
     `
   }
+
     #justifyClass(currentUserIsSender) {
         return currentUserIsSender ? "justify-content-end" : "justify-content-start"
       }
