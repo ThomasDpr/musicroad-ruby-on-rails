@@ -21,3 +21,5 @@ class FavoritesController < ApplicationController
     redirect_to festival_path(@favorite.festival), status: :see_other
   end
 end
+
+

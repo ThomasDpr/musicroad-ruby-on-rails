@@ -2,6 +2,7 @@ class Festival < ApplicationRecord
   has_many :festivals_artists
   has_many :artists, through: :festivals_artists
   has_many :favorites, dependent: :destroy
+  has_many :chatrooms
   has_one_attached :photo
 
   geocoded_by :location
