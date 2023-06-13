@@ -87,7 +87,7 @@ bordeaux = City.create(name: "Bordeaux")
 lille = City.create(name: "Lille")
 
 #cities.each do |city|
-  ## city
+ # city
 #end
 
 create_user(
