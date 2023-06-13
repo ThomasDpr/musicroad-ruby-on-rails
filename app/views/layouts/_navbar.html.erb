@@ -32,16 +32,16 @@
               placeholder: "Rechercher un Festival, Localisation..."
             %>
 
-            <!-- Bouton d'envoi du formulaire de recherche de date -->
-            <button type="submit" class="search-bar-icon">
-              <%= svg_tag "icons/calendar", class: "calendar-icon" %>
-            </button>
 
             <!-- Input du champ de date avec flatpickr -->
             <div class="flatpickr_dates" data-controller="flatpickr">
+              <!-- Bouton d'envoi du formulaire de recherche de date -->
+              <div class="search-bar-icon">
+                <%= svg_tag "icons/calendar", class: "calendar-icon" %>
+              </div>
               <%= f.input :start_time, as: :hidden %>
               <%= f.input :end_time, as: :hidden  %>
-              <input type="text" data-flatpickr-target="flatpicker" class= "date-range search-bar-input " name="flatpickr" placeholder="Rechercher par dates" value="<%= "#{params[:festival_filter][:start_time]} au #{params[:festival_filter][:end_time]}" if params[:festival_filter] && params[:festival_filter][:start_time].present? && params[:festival_filter][:end_time].present? %>">
+              <input type="text" data-flatpickr-target="flatpicker" class= "date-range search-bar-input " name="flatpickr" placeholder="Filtrer par dates" value="<%= "#{params[:festival_filter][:start_time]} au #{params[:festival_filter][:end_time]}" if params[:festival_filter] && params[:festival_filter][:start_time].present? && params[:festival_filter][:end_time].present? %>">
             </div>
 
           <% end %>
