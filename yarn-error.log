@@ -1,8 +1,8 @@
 Arguments: 
-  /Users/gonzaguebeyeler/.nvm/versions/node/v16.15.1/bin/node /Users/gonzaguebeyeler/.nvm/versions/node/v16.15.1/bin/yarn build --watch
+  /Users/gonzaguebeyeler/.nvm/versions/node/v16.15.1/bin/node /Users/gonzaguebeyeler/.nvm/versions/node/v16.15.1/bin/yarn install
 
 PATH: 
-  /Users/gonzaguebeyeler/.rbenv/versions/3.1.2/bin:/opt/homebrew/Cellar/rbenv/1.2.0/libexec:/opt/homebrew/opt/postgresql@15/bin:./bin:./node_modules/.bin:/Users/gonzaguebeyeler/.nvm/versions/node/v16.15.1/bin:/Users/gonzaguebeyeler/.rbenv/shims:/Users/gonzaguebeyeler/.rbenv/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/gonzaguebeyeler/.pyenv/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/sbin
+  /opt/homebrew/opt/postgresql@15/bin:./bin:./node_modules/.bin:/Users/gonzaguebeyeler/.nvm/versions/node/v16.15.1/bin:/Users/gonzaguebeyeler/.rbenv/shims:/Users/gonzaguebeyeler/.rbenv/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/gonzaguebeyeler/.pyenv/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/sbin
 
 Yarn version: 
   1.22.19
