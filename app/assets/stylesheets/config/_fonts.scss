@@ -86,6 +86,12 @@ a{
   span{
     font-weight: 200;
   }
+
+  .search{
+    font-size: 32px;
+    color: rgba($color: #fff, $alpha: .6);
+    padding-left: 15px;
+  }
 }
 
 .favorite-title-text{
