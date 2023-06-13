@@ -19,7 +19,8 @@
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    padding-block: 8px;
+    padding-block: 10px;
+    cursor: pointer;
 
     color: $main-text-color;
 
@@ -56,5 +57,10 @@
 }
 
 .date-range {
-  width: 185px !important;
+  text-align: left;
+  max-width: 200px;
+}
+
+.flatpickr_dates {
+  width: 200px;
 }

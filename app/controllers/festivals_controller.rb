@@ -7,13 +7,18 @@ class FestivalsController < ApplicationController
   def index
     @festivals = Festival.all
 
+    # Subquery to match festivals by name or location
     sql_subquery = "name ILIKE :query OR location ILIKE :query"
-    params[:query].present? ? @festivals = @festivals.where(sql_subquery, query: "%#{params[:query]}%") : @festivals
 
+    # Check if a search query is present and filter festivals by it if it is
+    if params[:query].present?
+      @festivals = @festivals.where(sql_subquery, query: "%#{params[:query]}%")
+    end
+
+    # Check if date filter parameters are present and filter festivals by them if they are
     if params[:festival_filter]
-      # raise
-      start_time = params[:festival_filter][:start_time].to_date
-      end_time = params[:festival_filter][:end_time].to_date
+      start_time = DateTime.parse(params[:festival_filter][:start_time]) if params[:festival_filter][:start_time].present?
+      end_time = DateTime.parse(params[:festival_filter][:end_time]) if params[:festival_filter][:end_time].present?
       @festivals = @festivals.where(start_date: start_time..end_time)
     end
 
