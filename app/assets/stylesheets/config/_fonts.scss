@@ -112,3 +112,23 @@ a{
   font-weight: 400;
   font-size: 16px;
 }
+.chatroom-title-text{
+  color: $main-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+}
+.city-text{
+  color: rgba($color: #fff, $alpha: .8);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.2s;
+
+  &:hover{
+    color: rgba($color: #fff, $alpha: 1);
+    background-color: rgba($color: $container-background-color, $alpha: .5);
+  }
+}
