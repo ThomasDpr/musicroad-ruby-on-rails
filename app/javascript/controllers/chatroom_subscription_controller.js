@@ -8,7 +8,7 @@ export default class extends Controller {
   static targets = ["messages"]
 
   connect() {
-    console.log('hello')
+    console.log('La fonction connect fonctionne')
     this.channel = createConsumer().subscriptions.create(
        { channel: "ChatroomChannel", id: this.chatroomIdValue },
        { received: data => this.#insertMessageAndScrollDown(data) },
@@ -24,7 +24,7 @@ export default class extends Controller {
       this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
    }
 
-    //#buildMessageElement(currentUserIsSender, message) {
+    #buildMessageElement(currentUserIsSender, message) {
         return `
           <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
             <div class="${this.#userStyleClass(currentUserIsSender)}">
