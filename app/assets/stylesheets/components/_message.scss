@@ -2,18 +2,23 @@
   margin-bottom: 10px;
   padding: 8px;
 }
-.d-flex {
+
+.message-row-right,
+.message-row-left {
   display: flex;
-}
-.justify-content-end {
-  justify-content: flex-end;
-}
-.justify-content-start {
-  justify-content: flex-start;
+  flex-direction: column;
 }
 
-// To style the message itself
-.sender-style, .receiver-style {
+.message-row-right {
+  align-items: flex-end;
+}
+
+.message-row-left {
+  align-items: flex-start;
+}
+
+.sender-style,
+.receiver-style {
   width: 70%;
   max-width: 400px;
   border-radius: 4px;
