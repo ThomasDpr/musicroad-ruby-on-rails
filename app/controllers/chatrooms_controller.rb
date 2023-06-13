@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @festival = Festival.all
+    @festivals = Festival.all
   end
 
   def show

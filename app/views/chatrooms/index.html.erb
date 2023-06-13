@@ -1,1 +1,8 @@
-<h1>TOUS LES FAVORIS</h1>
+<h1>All Festivals</h1>
+
+<% @festivals.each do |festival| %>
+  <div class="festival">
+    <h2><%= festival.name %></h2>
+    <%= link_to "chatrooms/show", festival_id_chatroom_path(festival, festival.chatrooms) %>
+  </div>
+<% end %>
