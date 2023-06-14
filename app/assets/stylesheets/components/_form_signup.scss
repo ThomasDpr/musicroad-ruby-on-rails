@@ -1,0 +1,82 @@
+.card-signup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+  padding: 50px 20px;
+  border-radius: 5px;
+  animation: breath-background 10s infinite;
+  background-color:  rgba(0, 0, 0, 0.5);
+
+  h2 {
+    text-align: center;
+    color: $main-text-color;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-inputs {
+    margin-bottom: 20px;
+    min-width: 250px;
+
+    input.form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      background: $secondary-background;
+      color: $main-text-color;
+
+      &:focus {
+        border-color: $container-background-color;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    label {
+      color: $main-text-color;
+    }
+
+    .name-inputs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.links-form-signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  p {
+    color: $main-text-color;
+    margin-bottom: 10px;
+  }
+  a {
+    color: $main-text-color;
+    text-decoration: none;
+    margin-bottom: 10px;
+    &:hover {
+      color: $main-text-color;
+      text-decoration: underline;
+    }
+  }
+}
