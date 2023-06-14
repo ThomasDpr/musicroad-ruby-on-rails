@@ -8,17 +8,11 @@
 
   <div class="festival-show-top">
 
-    <div class="festival-show-left" style="background-image: url('<%= cl_image_path @festival.photo.key %>')">
+    <div class="festival-show-left" style="background-image: url('<%= cl_image_path @festival.photo.key %>')" data-controller="like" >
       <% if  !user_signed_in? || Favorite.find_by(user: current_user, festival: @festival).nil? %>
-        <%= simple_form_for [@festival, @favorite] do |f| %>
-          <button type="submit" class="heart-icon">
-            <%= svg_tag "icons/heart" %>
-          </button>
-        <% end %>
+        <%= render "shared/unliked" %>
       <% else %>
-        <%= link_to favorite_path(@favorite), data:{ turbo_method: :delete }, class: "heart-icon" do %>
-          <%= svg_tag "icons/heart", class: "heart-liked" %>
-        <% end %>
+        <%= render "shared/liked" %>
       <% end %>
     </div>
 
@@ -33,12 +27,11 @@
 
       <div class="festival-artists-container">
         <% @artists.each_with_index do |artist, index| %>
-  <%= link_to festival_artist_path(params[:id], artist), class: "festival-artist" do %>
-    <%= image_tag "#{@artists_picture[index]}" %> 
-    <h3 class="album-text artist-text"><%= artist.name %></h3>
-  <% end %>
-<% end %>
-
+          <%= link_to festival_artist_path(params[:id], artist), class: "festival-artist" do %>
+            <%= image_tag "#{@artists_picture[index]}" %>
+            <h3 class="album-text artist-text"><%= artist.name %></h3>
+          <% end %>
+        <% end %>
       </div>
 
       <p class="paragraph-text"><%= @festival.description %></p>

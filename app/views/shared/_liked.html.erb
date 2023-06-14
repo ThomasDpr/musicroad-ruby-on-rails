@@ -1,0 +1,3 @@
+<%= button_to favorite_path(@favorite), class: "heart-icon", method: :delete, form: {data: {action: "submit->like#unliked", like_target: "action"}}, data:{like_target: "icon"} do %>
+  <%= svg_tag "icons/heart", class: "heart-liked" %>
+<% end %>
