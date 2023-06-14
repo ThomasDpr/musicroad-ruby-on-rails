@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @spotify = RSpotify::Artist.search(@artist.name).first
+    @spotify = RSpotify::Artist.find(@artist.spotify_id)
     @top_tracks = @spotify.top_tracks(:fr).first(5)
     @genres =  @spotify.genres.join(" #")
     @albums =  @spotify.albums.first(4)

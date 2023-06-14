@@ -23,6 +23,10 @@ gem "httparty"
 gem "geocoder"
 gem 'i18n'
 gem 'redis'
+gem 'rails_admin'
+gem 'rails_admin-i18n'
+gem 'colorize'
+
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -38,3 +42,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "cssbundling-rails"

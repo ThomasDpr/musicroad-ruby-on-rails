@@ -32,12 +32,13 @@
       </div>
 
       <div class="festival-artists-container">
-        <% @artists_name.each_with_index do |artist, index| %>
-          <%= link_to festival_artist_path(params[:id], Artist.find_by(name: artist)), class: "festival-artist" do %>
-            <%= image_tag "#{@artists_picture[index]}" %>
-            <h3 class="album-text artist-text"><%= artist %></h3>
-          <% end %>
-        <% end %>
+        <% @artists.each_with_index do |artist, index| %>
+  <%= link_to festival_artist_path(params[:id], artist), class: "festival-artist" do %>
+    <%= image_tag "#{@artists_picture[index]}" %> 
+    <h3 class="album-text artist-text"><%= artist.name %></h3>
+  <% end %>
+<% end %>
+
       </div>
 
       <p class="paragraph-text"><%= @festival.description %></p>
