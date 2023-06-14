@@ -4,7 +4,8 @@ puts 'Cleaning database...'
 FestivalsArtist.destroy_all
 City.destroy_all
 Festival.destroy_all
-# User.destroy_all
+Artist.destroy_all
+User.destroy_all
 
 
 def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names)
@@ -36,7 +37,7 @@ def create_festival(name, location, description, start_date, image_path, end_dat
     else
       spotify_artist = RSpotify::Artist.search(artist_name).first
       if spotify_artist
-        artist = Artist.create!(name: artist_name, spotify_id: spotify_artist.id)
+        artist = Artist.create!(name: artist_name, spotify_id: spotify_artist.id, image: spotify_artist.images.present? ? spotify_artist.images.first["url"] : "")
         FestivalsArtist.create!(festival: festival, artist: artist)
       else
         puts "❌ - #{artist_name} not found on Spotify".red
@@ -186,10 +187,9 @@ create_festival(
     'MICHEL POLNAREFF', 'LA FEMME', 'MATMATAH', 'CALI', 'MASSILIA SOUND SYSTEM', 'LA CARAVANE PASSE',
     'HILIGHT TRIBE', 'MEZERG', 'LITTLE BIG', 'TINARIWEN', 'UZI FREYJA', 'SWIFT GUAD', 'THE HYENES',
     'DALLE BETON', "AL'TARBA", 'ANGELA', 'PROLETER', 'THIS WILL DESTROY YOUR EARS', 'DEMAIN RAPIDES',
-    'LE JOSEM', 'CXK', '-M- (MATTHIEU CHEDID)', 'DELUXE', 'LA P\'TITE FUMEE', 'BENJAMIN BIOLAY',
+    'CXK', '-M- (MATTHIEU CHEDID)', 'DELUXE', 'LA P\'TITE FUMEE', 'BENJAMIN BIOLAY',
     'MEUTE', 'HK', 'BAGARRE', 'ASTEREOTYPIE', 'ROLAND CRISTAL', 'MEULE', 'MANUDIGITAL', 'HANIA RANI',
-    'AL TARBA', 'MOUNIKA', 'WATI WATIA ZOREY BAND DE MORIARTY', 'ALMÄ MANGO', 'MARGUERITE THIAM',
-    'PVC QUE DU TUBE'
+    'AL TARBA', 'MOUNIKA', 'WATI WATIA ZOREY BAND DE MORIARTY', 'ALMÄ MANGO', 'MARGUERITE THIAM'
   ]
 )
 

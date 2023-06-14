@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+  <div class="flash notice fadein" data-controller="flash" data-flash-target="flash"><%= flash[:notice] %><button data-action="click->flash#quit"><%= svg_tag "icons/x" %></button> </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="flash alert fadein" data-controller="flash" data-flash-target="flash"><%= flash[:alert] %><button data-action="click->flash#quit"><%= svg_tag "icons/x" %></button> </div>
+<% end %>
