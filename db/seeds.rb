@@ -7,7 +7,7 @@ Festival.destroy_all
 # User.destroy_all
 
 
-def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names)
+def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names, min_price, max_price)
   puts ""
   print "⛺️ - #{name} :"
   festival = Festival.create!(
@@ -16,7 +16,9 @@ def create_festival(name, location, description, start_date, image_path, end_dat
     description: description,
     start_date: start_date,
     end_date: end_date,
-    url: url
+    url: url,
+    min_price: min_price,
+    max_price: max_price
   )
 
   file = File.open(Rails.root.join(image_path))
@@ -190,7 +192,9 @@ create_festival(
     'MEUTE', 'HK', 'BAGARRE', 'ASTEREOTYPIE', 'ROLAND CRISTAL', 'MEULE', 'MANUDIGITAL', 'HANIA RANI',
     'AL TARBA', 'MOUNIKA', 'WATI WATIA ZOREY BAND DE MORIARTY', 'ALMÄ MANGO', 'MARGUERITE THIAM',
     'PVC QUE DU TUBE'
-  ]
+  ],
+  49.00,
+  120.00
 )
 
 create_festival(
@@ -205,7 +209,9 @@ create_festival(
     'LOUIS BERTIGNAC', 'LARKIN POE', 'CHRIS ISAAK', 'CANNED HEAT', 'CARAVAN',
     'TEXAS', 'BLANKASS', 'BARCLAY JAMES HARVEST', 'LEVEL 42', 'UUHAI', 'LENE LOVICH',
     'MIKA', 'IZIA', 'EDGAR (Edgär)'
-  ]
+  ],
+  130.00,
+  199.00
 )
 
 create_festival(
@@ -222,7 +228,9 @@ create_festival(
     'PLACEBO', 'MICHEL POLNAREFF', 'STARS 80 ENCORE', 'SAM SMITH', 'JENIFER',
     'ARCTIC MONKEYS', 'LUDOVICO EINAUDI', 'CHILLY GONZALES', 'SIGUR ROS',
     'CHRISTOPHE MAE', 'DJADJA & DINAZ', 'LOUISE ATTAQUE', 'DADJU', 'GIMS'
-  ]
+  ],
+  35.00,
+  112.00
 )
 
 create_festival(
@@ -241,7 +249,9 @@ create_festival(
     'GASPA CLAUS', 'PEDRO SOLER', 'INES BACAN', 'OMAR RAJEH', 'SIGUR ROS', 'DELUXE', 'ISABELLE ADJANI', 'IMANY',
     'SOUAD MASSI', 'TAMINO', 'JAN VERSTRAETEN', 'IREN DRESEL', 'FRENCH 79', 'CITRON SUCRE', 'THE BLAZE', 'POMME',
     'GHOSTLY KISSES', 'JEANNE ADDED', 'KUMBIA BORUKA', 'LILA DOWNS', 'SON ROMPE PERA'
-  ]
+  ],
+  0.00,
+  0.00
 )
 
 create_festival(
@@ -258,7 +268,9 @@ create_festival(
     "GEREMY CREDEVILLE", "KYAN KHOJANDI", "MARIE RENO", "BAPTISTE LECAPLAIN", "JEREMY NADEAU",
     "NASH UP", "LES NEGRESSES VERTES", "DJIBRIL CISSE TCHEBA", "VERONIQUE SANSON",
     "MICHEL POLNAREFF"
-  ]
+  ],
+  0.00,
+  0.00
 )
 
 create_festival(
@@ -280,9 +292,10 @@ create_festival(
     'ROLAND CRISTAL', 'SAINT LEVANT', 'J. BALVIN', 'MR OIZO', 'ZOLA', 'SHAKA PONK',
     'PIERRE DE MAERE', 'DELUXE', 'ANGELE', 'LA FEMME', 'HAMZA', 'FAVE', 'YOUV DEE',
     'REMA', 'OETE', 'GWENDOLINE', 'CERRONE', 'CHRONOLOGIC', 'SHYGIRL'
-  ]
+  ],
+  39.00,
+  129.00
 )
-
 
 create_festival(
   'Festival des Vieilles Charrues',
@@ -305,7 +318,9 @@ create_festival(
     'MODERAT', 'PAUL KALKBRENNER', 'ACID ARAB', 'ADE', 'GWENDOLINE', 'JOYSAD', 'KALIKA',
     'MADEMOISELLE K', 'STUFFED FOXES', 'AVALANCHE KAITO', 'KAOLILA', 'PARRANDA LA CRUZ',
     'TAXI KEBAB', 'RED HOT CHILI PEPPERS'
-  ]
+  ],
+  47.00,
+  193.00
 )
 
 create_festival(
@@ -322,7 +337,9 @@ create_festival(
     'Franz Ferdinand', 'Phoenix', 'Fatoumata Diawara', 'Feder', 'Martin Solveig',
     'Ko Ko Mo', 'Royal Republic', 'Rag\'n\'bone Man', 'Dirtyphonics', 'Coach Party',
     'Foals', 'Green Line Marching Band', 'Dynamite Shakers'
-  ]
+  ],
+  47.50,
+  154.00
 )
 
 create_festival(
@@ -371,7 +388,9 @@ create_festival(
     "Dance with the Dead", "Mutoid Man", "Dozer", "Legion of Doom",
     "Empire State Bastard", "Wolvennest", "Doodseskader", "Testament",
     "Dark Angel", "Benediction"
-  ]
+  ],
+  99.00,
+  329.00
 )
 
 create_festival(
@@ -399,7 +418,9 @@ create_festival(
     "Freyja", "Annie .adaa", "Social Dance", "Lisa Ducasse", "Claude",
     "Ada Oda", "Neniu", "Rallye", "Yoa", "Jeanne Rochette", "Vincent C",
     "Sunbather"
-  ]
+  ],
+  18.00,
+  70.00
 )
 
 create_festival(
@@ -424,7 +445,9 @@ create_festival(
     "ROSALÌA", "ROYAL REPUBLIC", "SAN HOLO", "SDM", "SLANDER", "SO LA LUNE",
     "STRAY KIDS", "SVDDEN DEATH Presents VOYD", "THE DRIVER ERA",
     "THE INSPECTOR CLUZO", "TOKISCHA", "TONY ROMERA", "WILLIAM BLANKE: William Black b2b Blanke", "2TH"
-  ]
+  ],
+  89.00,
+  220.00
 )
 
 create_festival(
@@ -445,7 +468,9 @@ create_festival(
     "JOHN BUTLER", "FEVER 333", "SUZANE", "SPOON", "BBNO$", "JOÉ DWÈT FILÉ",
     "KO KO MO", "SIR CHLOE", "LYDSTEN", "QUEEN(ARES)", "JUNE BUG", "RETHNO",
     "GANG CLOUDS"
-  ]
+  ],
+  65.00,
+  155.00
 )
 
 create_festival(
@@ -468,7 +493,9 @@ create_festival(
     "KIDS RETURN", "SIOUXSIE", "SHLØMO", "DRY CLEANING", "FALLEN LILLIES",
     "ALEISTER", "SAVERIO", "DJ CARLOS WILLENGTON", "UNKNOWN T", "SPECIAL INTEREST",
     "INDOCHINE", "COACH PARTY", "CHEF AND THE GANG"
-  ]
+  ],
+  62.00,
+  190.00
 )
 
 create_festival(
@@ -488,7 +515,9 @@ create_festival(
     "Girl in red", "Tove Lo", "Hannah Grae", "Lucie Antunes", "The Strokes",
     "Foals", "Wet Leg", "Amyl & the Sniffers", "Bonobo", "Angel Olsen",
     "Gaz Coombes", "The Murder capital", "Nova Twins", "Zed Yun Pavarotti"
-  ]
+  ],
+  75.00,
+  175.00
 )
 
 
@@ -509,7 +538,9 @@ create_festival(
     "SIMIA", "HONEYGLAZE", "SELAH SUE", "FRANZ FERDINAND", "PHOENIX", "FLAVIEN BERGER",
     "IGGY POP", "TIWAYO", "PEDRO WINTER AKA BUSY P", "TEMPLES", "CERRONE", "ED BANGER",
     "CRYSTAL MURRAY", "MOODOID"
-  ]
+  ],
+  66.00,
+  205.00
 )
 
 create_festival(
@@ -533,7 +564,9 @@ create_festival(
     "MYD", "NICO RODAS", "NOVI SAD", "NUFF LOVE", "OLIVIER CACHIN", "POÉSIE ZÉRO",
     "REBEKA WARRIOR", "S.O UNITY", "SUPER DARONNE", "THE DEAD KRAZUKIES", "WILLIAM NC",
     "YOUTHSTAR X MISCELLANEOUS"
-  ]
+  ],
+  60.00,
+  220.00
 )
 
 create_festival(
@@ -566,7 +599,9 @@ create_festival(
     "One Life", "Positive Energy", "Poz Clope", "QQUN", "Ravl", "Rouge",
     "Sens Inverse Agency", "Synapson", "Tino", "Toko", "Twerkistan",
     "Vladimir Dubyshkin", "Watt The Fox"
-  ]
+  ],
+  64.00,
+  243.00
 )
 
 create_festival(
@@ -591,5 +626,7 @@ create_festival(
     "MOODOÏD", "SABRINA BELLAOUEL", "CAROLINE POLACHEK", "ANAIS B", "VTSS", "GABRIELS",
     "AIME SIMONE", "NIA ARCHIVES", "SUDAN ARCHIVES", "J9UEVE", "LUTHER", "WINNTERZUKO",
     "H JEUNECRACK", "CRYSTALLMESS", "CINQUIEME TERRASSE", "GREG & TATYANA JANE", "GRUNT PARTY x NAVA"
-  ]
+  ],
+  49.00,
+  159.00
 )
