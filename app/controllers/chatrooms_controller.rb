@@ -1,7 +1,10 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @festivals = Festival.all
+    @favorites = Favorite.where(user: current_user)
+    @chatrooms = Chatroom.where(favorite: true)
+    @chatrooms = Chatroom.all
+    @favorite = Favorite.all
   end
 
   def show
