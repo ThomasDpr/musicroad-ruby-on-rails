@@ -1,35 +1,52 @@
+require 'colorize'
+
 puts 'Cleaning database...'
 FestivalsArtist.destroy_all
 City.destroy_all
-Artist.destroy_all
 Festival.destroy_all
+Artist.destroy_all
 User.destroy_all
 
 
-def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names)
-  puts "Creating festival: #{name}..."
+def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names, min_price, max_price)
+  puts ""
+  print "⛺️ - #{name} :"
   festival = Festival.create!(
     name: name,
     location: location,
     description: description,
     start_date: start_date,
     end_date: end_date,
-    url: url
+    url: url,
+    min_price: min_price,
+    max_price: max_price
   )
 
   file = File.open(Rails.root.join(image_path))
   festival.photo.attach(io: file, filename: "#{name.downcase.gsub(' ', '_')}.jpg", content_type: 'image/jpg')
   festival.save!
 
-  puts "#{name} created !"
+  puts " Successfully created ! 🎉".green
+  # puts ""
+  print "👨🏼‍🎤 - #{name} artists :"
+  puts " Successfully created ! 🎉".green
 
-  puts "Creating artists for #{name}..."
 
   artist_names.each do |artist_name|
-    artist = Artist.find_or_create_by(name: artist_name)
-    FestivalsArtist.create!(festival: festival, artist: artist)
+    artist = Artist.find_by(name: artist_name)
+    if artist
+      FestivalsArtist.create!(festival: festival, artist: artist)
+    else
+      spotify_artist = RSpotify::Artist.search(artist_name).first
+      if spotify_artist
+        artist = Artist.create!(name: artist_name, spotify_id: spotify_artist.id, image: spotify_artist.images.present? ? spotify_artist.images.first["url"] : "")
+        FestivalsArtist.create!(festival: festival, artist: artist)
+      else
+        puts "❌ - #{artist_name} not found on Spotify".red
+      end
+    end
   end
-  puts "#{name} artists created !"
+
 
   City.all.each do |city|
     create_chatroom(festival: festival, city: city)
@@ -38,31 +55,33 @@ def create_festival(name, location, description, start_date, image_path, end_dat
 end
 
 def create_user(first_name, last_name, age, email, password, photo_path)
-  puts "Creating user: #{first_name} #{last_name}..."
 
-  user = User.create!(
-    first_name: first_name,
-    last_name: last_name,
-    age: age,
-    email: email,
-    password: password
-  )
+  puts ""
+  print "🙋🏻‍♂️ - #{first_name} #{last_name} :"
+
+  user = User.find_or_create_by(email: email) do |user|
+    user.first_name = first_name
+    user.last_name = last_name
+    user.age = age
+    user.password = password
+  end
 
   file = File.open(Rails.root.join(photo_path))
   user.photo.attach(io: file, filename: 'avatar.jpg', content_type: 'image/jpg')
   user.save!
 
-  puts "#{first_name} #{last_name} created !"
+  puts " Successfully created ! 👍🏼".green
 end
 
 def create_city(name)
-  puts "Creating city: #{name}..."
+  puts ""
+  print "🌆 - #{name} :"
 
   city = City.create!(
     name: name
   )
 
-  puts "#{name} created !"
+  puts " Successfully created ! 🎉".green
   city
 end
 
@@ -71,23 +90,44 @@ def create_chatroom(festival:, city:)
   chatroom = Chatroom.create(festival: festival, city: city, name: name)
 end
 
-puts '=========== Creating cities ==========='
+puts ""
+puts "-------------------------"
+puts "------- CITIES -----------"
+puts "-------------------------"
+
+puts ""
+puts "Creating Cities..."
+puts ""
 
 cities = [
   'Paris', 'Marseille', 'Lyon', 'Toulouse', 'Nice', 'Nantes', 'Strasbourg', 'Bordeaux', 'Lille',
   'Brest'
 ]
-paris = City.create!(name: "Paris")
-lyon = City.create(name: "Lyon")
-toulouse = City.create(name: "Toulouse")
-nice = City.create(name: "Nice")
-nantes = City.create(name: "Nantes")
-strasbourg = City.create(name: "Strasbourg")
-bordeaux = City.create(name: "Bordeaux")
-lille = City.create(name: "Lille")
+
+cities.each do |city|
+  create_city(city)
+end
+
+paris = City.find_or_create_by(name: "Paris")
+marseille = City.find_or_create_by(name: "Marseille")
+lyon = City.find_or_create_by(name: "Lyon")
+toulouse = City.find_or_create_by(name: "Toulouse")
+nice = City.find_or_create_by(name: "Nice")
+nantes = City.find_or_create_by(name: "Nantes")
+strasbourg = City.find_or_create_by(name: "Strasbourg")
+bordeaux = City.find_or_create_by(name: "Bordeaux")
+lille = City.find_or_create_by(name: "Lille")
+brest = City.find_or_create_by(name: "Brest")
 
 
-puts '=========== Creating users ==========='
+puts ""
+puts "-------------------------"
+puts "------- USERS -----------"
+puts "-------------------------"
+
+puts ""
+puts "Creating Users..."
+puts ""
 
 create_user(
   'Drink',
@@ -125,7 +165,14 @@ create_user(
   'db/avatar/john_mcdonald.jpg'
 )
 
-puts '=========== Creating festivals ==========='
+puts ""
+puts "-------------------------"
+puts "------- FESTIVALS -------"
+puts "-------------------------"
+
+puts ""
+puts "Creating Festivals..."
+puts ""
 
 create_festival(
   'Musicalarue',
@@ -142,11 +189,13 @@ create_festival(
     'MICHEL POLNAREFF', 'LA FEMME', 'MATMATAH', 'CALI', 'MASSILIA SOUND SYSTEM', 'LA CARAVANE PASSE',
     'HILIGHT TRIBE', 'MEZERG', 'LITTLE BIG', 'TINARIWEN', 'UZI FREYJA', 'SWIFT GUAD', 'THE HYENES',
     'DALLE BETON', "AL'TARBA", 'ANGELA', 'PROLETER', 'THIS WILL DESTROY YOUR EARS', 'DEMAIN RAPIDES',
-    'LE JOSEM', 'CXK', '-M- (MATTHIEU CHEDID)', 'DELUXE', 'LA P\'TITE FUMEE', 'BENJAMIN BIOLAY',
+    'CXK', '-M- (MATTHIEU CHEDID)', 'DELUXE', 'LA P\'TITE FUMEE', 'BENJAMIN BIOLAY',
     'MEUTE', 'HK', 'BAGARRE', 'ASTEREOTYPIE', 'ROLAND CRISTAL', 'MEULE', 'MANUDIGITAL', 'HANIA RANI',
     'AL TARBA', 'MOUNIKA', 'WATI WATIA ZOREY BAND DE MORIARTY', 'ALMÄ MANGO', 'MARGUERITE THIAM',
     'PVC QUE DU TUBE'
-  ]
+  ],
+  49.00,
+  120.00
 )
 
 create_festival(
@@ -161,7 +210,9 @@ create_festival(
     'LOUIS BERTIGNAC', 'LARKIN POE', 'CHRIS ISAAK', 'CANNED HEAT', 'CARAVAN',
     'TEXAS', 'BLANKASS', 'BARCLAY JAMES HARVEST', 'LEVEL 42', 'UUHAI', 'LENE LOVICH',
     'MIKA', 'IZIA', 'EDGAR (Edgär)'
-  ]
+  ],
+  130.00,
+  199.00
 )
 
 create_festival(
@@ -178,7 +229,9 @@ create_festival(
     'PLACEBO', 'MICHEL POLNAREFF', 'STARS 80 ENCORE', 'SAM SMITH', 'JENIFER',
     'ARCTIC MONKEYS', 'LUDOVICO EINAUDI', 'CHILLY GONZALES', 'SIGUR ROS',
     'CHRISTOPHE MAE', 'DJADJA & DINAZ', 'LOUISE ATTAQUE', 'DADJU', 'GIMS'
-  ]
+  ],
+  35.00,
+  112.00
 )
 
 create_festival(
@@ -197,7 +250,9 @@ create_festival(
     'GASPA CLAUS', 'PEDRO SOLER', 'INES BACAN', 'OMAR RAJEH', 'SIGUR ROS', 'DELUXE', 'ISABELLE ADJANI', 'IMANY',
     'SOUAD MASSI', 'TAMINO', 'JAN VERSTRAETEN', 'IREN DRESEL', 'FRENCH 79', 'CITRON SUCRE', 'THE BLAZE', 'POMME',
     'GHOSTLY KISSES', 'JEANNE ADDED', 'KUMBIA BORUKA', 'LILA DOWNS', 'SON ROMPE PERA'
-  ]
+  ],
+  0.00,
+  0.00
 )
 
 create_festival(
@@ -214,7 +269,9 @@ create_festival(
     "GEREMY CREDEVILLE", "KYAN KHOJANDI", "MARIE RENO", "BAPTISTE LECAPLAIN", "JEREMY NADEAU",
     "NASH UP", "LES NEGRESSES VERTES", "DJIBRIL CISSE TCHEBA", "VERONIQUE SANSON",
     "MICHEL POLNAREFF"
-  ]
+  ],
+  0.00,
+  0.00
 )
 
 create_festival(
@@ -236,9 +293,10 @@ create_festival(
     'ROLAND CRISTAL', 'SAINT LEVANT', 'J. BALVIN', 'MR OIZO', 'ZOLA', 'SHAKA PONK',
     'PIERRE DE MAERE', 'DELUXE', 'ANGELE', 'LA FEMME', 'HAMZA', 'FAVE', 'YOUV DEE',
     'REMA', 'OETE', 'GWENDOLINE', 'CERRONE', 'CHRONOLOGIC', 'SHYGIRL'
-  ]
+  ],
+  39.00,
+  129.00
 )
-
 
 create_festival(
   'Festival des Vieilles Charrues',
@@ -261,7 +319,9 @@ create_festival(
     'MODERAT', 'PAUL KALKBRENNER', 'ACID ARAB', 'ADE', 'GWENDOLINE', 'JOYSAD', 'KALIKA',
     'MADEMOISELLE K', 'STUFFED FOXES', 'AVALANCHE KAITO', 'KAOLILA', 'PARRANDA LA CRUZ',
     'TAXI KEBAB', 'RED HOT CHILI PEPPERS'
-  ]
+  ],
+  47.00,
+  193.00
 )
 
 create_festival(
@@ -278,7 +338,9 @@ create_festival(
     'Franz Ferdinand', 'Phoenix', 'Fatoumata Diawara', 'Feder', 'Martin Solveig',
     'Ko Ko Mo', 'Royal Republic', 'Rag\'n\'bone Man', 'Dirtyphonics', 'Coach Party',
     'Foals', 'Green Line Marching Band', 'Dynamite Shakers'
-  ]
+  ],
+  47.50,
+  154.00
 )
 
 create_festival(
@@ -327,7 +389,9 @@ create_festival(
     "Dance with the Dead", "Mutoid Man", "Dozer", "Legion of Doom",
     "Empire State Bastard", "Wolvennest", "Doodseskader", "Testament",
     "Dark Angel", "Benediction"
-  ]
+  ],
+  99.00,
+  329.00
 )
 
 create_festival(
@@ -355,7 +419,9 @@ create_festival(
     "Freyja", "Annie .adaa", "Social Dance", "Lisa Ducasse", "Claude",
     "Ada Oda", "Neniu", "Rallye", "Yoa", "Jeanne Rochette", "Vincent C",
     "Sunbather"
-  ]
+  ],
+  18.00,
+  70.00
 )
 
 create_festival(
@@ -380,7 +446,9 @@ create_festival(
     "ROSALÌA", "ROYAL REPUBLIC", "SAN HOLO", "SDM", "SLANDER", "SO LA LUNE",
     "STRAY KIDS", "SVDDEN DEATH Presents VOYD", "THE DRIVER ERA",
     "THE INSPECTOR CLUZO", "TOKISCHA", "TONY ROMERA", "WILLIAM BLANKE: William Black b2b Blanke", "2TH"
-  ]
+  ],
+  89.00,
+  220.00
 )
 
 create_festival(
@@ -401,7 +469,9 @@ create_festival(
     "JOHN BUTLER", "FEVER 333", "SUZANE", "SPOON", "BBNO$", "JOÉ DWÈT FILÉ",
     "KO KO MO", "SIR CHLOE", "LYDSTEN", "QUEEN(ARES)", "JUNE BUG", "RETHNO",
     "GANG CLOUDS"
-  ]
+  ],
+  65.00,
+  155.00
 )
 
 create_festival(
@@ -424,7 +494,9 @@ create_festival(
     "KIDS RETURN", "SIOUXSIE", "SHLØMO", "DRY CLEANING", "FALLEN LILLIES",
     "ALEISTER", "SAVERIO", "DJ CARLOS WILLENGTON", "UNKNOWN T", "SPECIAL INTEREST",
     "INDOCHINE", "COACH PARTY", "CHEF AND THE GANG"
-  ]
+  ],
+  62.00,
+  190.00
 )
 
 create_festival(
@@ -444,7 +516,9 @@ create_festival(
     "Girl in red", "Tove Lo", "Hannah Grae", "Lucie Antunes", "The Strokes",
     "Foals", "Wet Leg", "Amyl & the Sniffers", "Bonobo", "Angel Olsen",
     "Gaz Coombes", "The Murder capital", "Nova Twins", "Zed Yun Pavarotti"
-  ]
+  ],
+  75.00,
+  175.00
 )
 
 
@@ -465,7 +539,9 @@ create_festival(
     "SIMIA", "HONEYGLAZE", "SELAH SUE", "FRANZ FERDINAND", "PHOENIX", "FLAVIEN BERGER",
     "IGGY POP", "TIWAYO", "PEDRO WINTER AKA BUSY P", "TEMPLES", "CERRONE", "ED BANGER",
     "CRYSTAL MURRAY", "MOODOID"
-  ]
+  ],
+  66.00,
+  205.00
 )
 
 create_festival(
@@ -489,7 +565,9 @@ create_festival(
     "MYD", "NICO RODAS", "NOVI SAD", "NUFF LOVE", "OLIVIER CACHIN", "POÉSIE ZÉRO",
     "REBEKA WARRIOR", "S.O UNITY", "SUPER DARONNE", "THE DEAD KRAZUKIES", "WILLIAM NC",
     "YOUTHSTAR X MISCELLANEOUS"
-  ]
+  ],
+  60.00,
+  220.00
 )
 
 create_festival(
@@ -522,7 +600,9 @@ create_festival(
     "One Life", "Positive Energy", "Poz Clope", "QQUN", "Ravl", "Rouge",
     "Sens Inverse Agency", "Synapson", "Tino", "Toko", "Twerkistan",
     "Vladimir Dubyshkin", "Watt The Fox"
-  ]
+  ],
+  64.00,
+  243.00
 )
 
 create_festival(
@@ -547,5 +627,7 @@ create_festival(
     "MOODOÏD", "SABRINA BELLAOUEL", "CAROLINE POLACHEK", "ANAIS B", "VTSS", "GABRIELS",
     "AIME SIMONE", "NIA ARCHIVES", "SUDAN ARCHIVES", "J9UEVE", "LUTHER", "WINNTERZUKO",
     "H JEUNECRACK", "CRYSTALLMESS", "CINQUIEME TERRASSE", "GREG & TATYANA JANE", "GRUNT PARTY x NAVA"
-  ]
+  ],
+  49.00,
+  159.00
 )
