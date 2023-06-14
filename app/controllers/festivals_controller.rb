@@ -34,7 +34,7 @@ class FestivalsController < ApplicationController
   def show
     @festival = Festival.find(params[:id])
 
-    @artists = @festival.artists.first(12)
+    @artists = @festival.artists.sort_by { |artist| artist.name }
     @artists_picture = @artists.map do |artist|
       artist.image
     end
