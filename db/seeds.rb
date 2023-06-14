@@ -1,13 +1,15 @@
+require 'colorize'
+
 puts 'Cleaning database...'
 FestivalsArtist.destroy_all
 City.destroy_all
-Artist.destroy_all
 Festival.destroy_all
-User.destroy_all
+# User.destroy_all
 
 
 def create_festival(name, location, description, start_date, image_path, end_date, url, artist_names)
-  puts "Creating festival: #{name}..."
+  puts ""
+  print "⛺️ - #{name} :"
   festival = Festival.create!(
     name: name,
     location: location,
@@ -21,15 +23,27 @@ def create_festival(name, location, description, start_date, image_path, end_dat
   festival.photo.attach(io: file, filename: "#{name.downcase.gsub(' ', '_')}.jpg", content_type: 'image/jpg')
   festival.save!
 
-  puts "#{name} created !"
+  puts " Successfully created ! 🎉".green
+  # puts ""
+  print "👨🏼‍🎤 - #{name} artists :"
+  puts " Successfully created ! 🎉".green
 
-  puts "Creating artists for #{name}..."
 
   artist_names.each do |artist_name|
-    artist = Artist.find_or_create_by(name: artist_name)
-    FestivalsArtist.create!(festival: festival, artist: artist)
+    artist = Artist.find_by(name: artist_name)
+    if artist
+      FestivalsArtist.create!(festival: festival, artist: artist)
+    else
+      spotify_artist = RSpotify::Artist.search(artist_name).first
+      if spotify_artist
+        artist = Artist.create!(name: artist_name, spotify_id: spotify_artist.id)
+        FestivalsArtist.create!(festival: festival, artist: artist)
+      else
+        puts "❌ - #{artist_name} not found on Spotify".red
+      end
+    end
   end
-  puts "#{name} artists created !"
+
 
   City.all.each do |city|
     create_chatroom(festival: festival, city: city)
@@ -38,31 +52,33 @@ def create_festival(name, location, description, start_date, image_path, end_dat
 end
 
 def create_user(first_name, last_name, age, email, password, photo_path)
-  puts "Creating user: #{first_name} #{last_name}..."
 
-  user = User.create!(
-    first_name: first_name,
-    last_name: last_name,
-    age: age,
-    email: email,
-    password: password
-  )
+  puts ""
+  print "🙋🏻‍♂️ - #{first_name} #{last_name} :"
+
+  user = User.find_or_create_by(email: email) do |user|
+    user.first_name = first_name
+    user.last_name = last_name
+    user.age = age
+    user.password = password
+  end
 
   file = File.open(Rails.root.join(photo_path))
   user.photo.attach(io: file, filename: 'avatar.jpg', content_type: 'image/jpg')
   user.save!
 
-  puts "#{first_name} #{last_name} created !"
+  puts " Successfully created ! 👍🏼".green
 end
 
 def create_city(name)
-  puts "Creating city: #{name}..."
+  puts ""
+  print "🌆 - #{name} :"
 
   city = City.create!(
     name: name
   )
 
-  puts "#{name} created !"
+  puts " Successfully created ! 🎉".green
   city
 end
 
@@ -71,23 +87,44 @@ def create_chatroom(festival:, city:)
   chatroom = Chatroom.create(festival: festival, city: city, name: name)
 end
 
-puts '=========== Creating cities ==========='
+puts ""
+puts "-------------------------"
+puts "------- CITIES -----------"
+puts "-------------------------"
+
+puts ""
+puts "Creating Cities..."
+puts ""
 
 cities = [
   'Paris', 'Marseille', 'Lyon', 'Toulouse', 'Nice', 'Nantes', 'Strasbourg', 'Bordeaux', 'Lille',
   'Brest'
 ]
-paris = City.create!(name: "Paris")
-lyon = City.create(name: "Lyon")
-toulouse = City.create(name: "Toulouse")
-nice = City.create(name: "Nice")
-nantes = City.create(name: "Nantes")
-strasbourg = City.create(name: "Strasbourg")
-bordeaux = City.create(name: "Bordeaux")
-lille = City.create(name: "Lille")
+
+cities.each do |city|
+  create_city(city)
+end
+
+paris = City.find_or_create_by(name: "Paris")
+marseille = City.find_or_create_by(name: "Marseille")
+lyon = City.find_or_create_by(name: "Lyon")
+toulouse = City.find_or_create_by(name: "Toulouse")
+nice = City.find_or_create_by(name: "Nice")
+nantes = City.find_or_create_by(name: "Nantes")
+strasbourg = City.find_or_create_by(name: "Strasbourg")
+bordeaux = City.find_or_create_by(name: "Bordeaux")
+lille = City.find_or_create_by(name: "Lille")
+brest = City.find_or_create_by(name: "Brest")
 
 
-puts '=========== Creating users ==========='
+puts ""
+puts "-------------------------"
+puts "------- USERS -----------"
+puts "-------------------------"
+
+puts ""
+puts "Creating Users..."
+puts ""
 
 create_user(
   'Drink',
@@ -125,7 +162,14 @@ create_user(
   'db/avatar/john_mcdonald.jpg'
 )
 
-puts '=========== Creating festivals ==========='
+puts ""
+puts "-------------------------"
+puts "------- FESTIVALS -------"
+puts "-------------------------"
+
+puts ""
+puts "Creating Festivals..."
+puts ""
 
 create_festival(
   'Musicalarue',

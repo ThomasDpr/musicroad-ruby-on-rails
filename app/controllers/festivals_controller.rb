@@ -33,8 +33,11 @@ class FestivalsController < ApplicationController
 
   def show
     @festival = Festival.find(params[:id])
-    @artists_name = @festival.artists.first(12).map(&:name)
-    @artists_picture = @artists_name.map { |artist| RSpotify::Artist.search(artist).first.images.first["url"] }
+    @artists = @festival.artists.first(12)
+    @artists_picture = @artists.map do |artist|
+      RSpotify::Artist.find(artist.spotify_id).images.first["url"]
+    end
+
     @marker = { lat: @festival.latitude, lng: @festival.longitude, info_window_html: render_to_string(partial: "info_window", locals: { festival: @festival }) }
     if !user_signed_in? || Favorite.find_by(user: current_user, festival: @festival).nil?
       @favorite = Favorite.new
