@@ -10,6 +10,9 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import CopyToClipboardController from "./copy_to_clipboard_controller"
 application.register("copy-to-clipboard", CopyToClipboardController)
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
@@ -21,5 +24,3 @@ application.register("map", MapController)
 
 import SpotifyPlayerController from "./spotify_player_controller"
 application.register("spotify-player", SpotifyPlayerController)
-
-
