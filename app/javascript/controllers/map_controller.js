@@ -17,7 +17,7 @@ export default class extends Controller {
       style: 'mapbox://styles/mapbox/satellite-streets-v11',
     })
 
-    
+
 
     this.map.dragPan.disable();
     this.map.scrollZoom.disable();
@@ -67,5 +67,9 @@ export default class extends Controller {
     this.map.scrollZoom.enable();
     this.map.doubleClickZoom.enable();
     this.map.boxZoom.enable();
+  }
+
+  disconnect() {
+    this.geocoder.onRemove()
   }
 }
