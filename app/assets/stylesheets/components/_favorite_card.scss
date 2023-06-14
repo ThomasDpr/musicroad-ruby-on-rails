@@ -37,7 +37,7 @@
       justify-content: space-between;
       align-items: center;
 
-      .heart-icon{
+      .heart-liked{
         position: absolute;
         right: 0px;
         top: 0px;
@@ -67,5 +67,22 @@
         }
       }
     }
+  }
+}
+
+.chatrooms-favorites-card{
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 10px 20px 10px 0px;
+
+  .fav-card{
+    display: flex;
+    background-color: rgba($color: #000000, $alpha: .5);
+    border-radius: 10px;
+    padding: 10px;
+    padding-right: 20px;
+    gap: 20px;
   }
 }

@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="sub-title">M<span>es chatrooms</span></h1>
-  <div class="favorite-card">
+  <div class="chatrooms-favorites-card">
 
     <% @favorites.each do |favorite| %>
       <%= link_to chatroom_path(favorite.festival.chatrooms.first), class: "fav-card" do %>
@@ -12,7 +12,6 @@
           <div class="separator">
             <div class="top">
               <h1 class="favorite-title-text"><%= favorite.festival.name %></h1>
-              <%= svg_tag "icons/heart", class: "heart-liked" %>
             </div>
             <div class="middle">
               <h3 class="text-location"><%= favorite.festival.location %></h3>

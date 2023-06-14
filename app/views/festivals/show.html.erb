@@ -3,7 +3,7 @@
   <%= link_to festivals_path, class: "back-icon" do %>
     <%= svg_tag "icons/back" %>
   <% end %>
-    <%= link_to "Billetterie", @festival.url, class: "btn-secondary", target: "_blank" %>
+   <%= link_to "Billet de #{@festival.min_price}€ à #{@festival.max_price}€ ", @festival.url, class: "btn-secondary", target: "_blank" %>
 </div>
 
   <div class="festival-show-top">
@@ -32,6 +32,7 @@
             <h3 class="album-text artist-text"><%= artist.name %></h3>
           <% end %>
         <% end %>
+
       </div>
 
       <p class="paragraph-text"><%= @festival.description %></p>
