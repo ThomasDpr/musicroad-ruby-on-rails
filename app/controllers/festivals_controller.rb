@@ -40,7 +40,12 @@ class FestivalsController < ApplicationController
       artist.image
     end
 
-    @marker = { lat: @festival.latitude, lng: @festival.longitude, info_window_html: render_to_string(partial: "info_window", locals: { festival: @festival }) }
+    @marker = {
+      lat: @festival.latitude,
+      lng: @festival.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: { festival: @festival }),
+      marker_html: render_to_string(partial: "marker")
+    }
 
     if !user_signed_in? || Favorite.find_by(user: current_user, festival: @festival).nil?
       @favorite = Favorite.new
