@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     marker: Object,
-    markers: Array
+    markers: Array,
   }
 
   connect() {
@@ -16,8 +16,6 @@ export default class extends Controller {
       // style: "mapbox://styles/mapbox/outdoors-v12",
       style: 'mapbox://styles/mapbox/satellite-streets-v11',
     })
-
-
 
     this.map.dragPan.disable();
     this.map.scrollZoom.disable();
@@ -35,21 +33,18 @@ export default class extends Controller {
 
   }
 
-  #addMarkerToMap() {
-    const popup = new mapboxgl.Popup().setHTML(this.markerValue.info_window_html)
-    new mapboxgl.Marker()
-      .setLngLat([ this.markerValue.lng, this.markerValue.lat ])
-      .addTo(this.map)
-      .setPopup(popup)
-  }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
-        .setPopup(popup)
+      const customMarker = document.createElement("div")
+        customMarker.innerHTML = marker.marker_html
+        customMarker.classList.add("pb-5")
+      new mapboxgl.Marker(customMarker)
+      .setLngLat([marker.lng, marker.lat])
+      .setPopup(popup)
+      .addTo(this.map)
+
     })
   }
 

@@ -26,7 +26,8 @@ class FestivalsController < ApplicationController
       {
         lat: festival.latitude,
         lng: festival.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: { festival: festival })
+        info_window_html: render_to_string(partial: "info_window", locals: { festival: festival }),
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
