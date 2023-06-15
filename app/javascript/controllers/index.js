@@ -27,3 +27,6 @@ application.register("map", MapController)
 
 import SpotifyPlayerController from "./spotify_player_controller"
 application.register("spotify-player", SpotifyPlayerController)
+
+import UploadAvatarController from "./upload_avatar_controller"
+application.register("upload-avatar", UploadAvatarController)

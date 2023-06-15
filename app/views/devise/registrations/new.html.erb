@@ -1,9 +1,18 @@
-
 <div class="card-signup">
   <h2>S'inscrire</h2>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
+
+
+    <div data-controller="upload-avatar", class="upload-avatar">
+        <%= f.input :photo, as: :file, label: false, input_html: { id: "photo", class: "hidden-avatar", data: { target: "upload-avatar.input" } } %>
+        <label for="photo" class="upload-button">
+          <span data-upload-avatar-target="preview" class="avatar-preview">
+            <span class="camera-icon"><i class="fa-solid fa-camera"></i></span>
+          </span>
+        </label>
+      </div>
       <div class="name-inputs">
         <%= f.input :first_name,
                     required: true,
