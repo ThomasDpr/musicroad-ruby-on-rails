@@ -1,0 +1,3 @@
+<%= button_to festival_favorites_path(@festival, @favorite), form: {data: {action: "submit->like#liked", like_target: "action"}}, method: :post, class: "heart-icon", data:{like_target: "icon"} do %>
+  <%= svg_tag "icons/heart" %>
+<% end %>
