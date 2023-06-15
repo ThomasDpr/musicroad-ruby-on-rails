@@ -10,5 +10,6 @@ class ArtistsController < ApplicationController
     @top_tracks = @spotify.top_tracks(:fr).first(5)
     @genres =  @spotify.genres.join(" #")
     @albums =  @spotify.albums.first(4)
+    @other_festivals = FestivalsArtist.where(artist: @artist).where.not(festival: params[:festival_id])
   end
 end

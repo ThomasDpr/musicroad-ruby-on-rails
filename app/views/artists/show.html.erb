@@ -34,7 +34,23 @@
           </button>
         </div>
       </div>
-      <a href="<%= @spotify.external_urls["spotify"] %>" class="btn-spotify"><%= svg_tag "icons/spotify", class: "spotify-icon" %> Écouter plus</a>
+      <div class="btn">
+        <a href="<%= @spotify.external_urls["spotify"] %>" class="btn-spotify"><%= svg_tag "icons/spotify", class: "spotify-icon" %> Écouter plus</a>
+        <% if @other_festivals.present? %>
+          <div class="dropdown-menu" data-controller="dropdown">
+            <button class="btn-secondary" data-action="click->dropdown#toggle"><%= svg_tag "icons/down", "data-dropdown-target": "svg", class: "rotate" %>Participe aussi</button>
+            <div class="dropdown-items hidden" data-dropdown-target="menu">
+              <% @other_festivals.each do |festival| %>
+                <%= link_to festival_path(festival.festival), class: "dropdown-item" do %>
+                  <%= festival.festival.name %>
+                <% end %>
+                <div class="separator"></div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
     </div>
 
   </div>
