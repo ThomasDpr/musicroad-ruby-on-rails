@@ -1,0 +1,52 @@
+.mapboxgl-popup-tip{
+  border-top-color: rgba($color: #000000, $alpha: .5) !important;
+  backdrop-filter: blur(10px);
+}
+.mapboxgl-popup-content{
+  background: rgba($color: #000000, $alpha: .5) !important;
+  border: none;
+  backdrop-filter: blur(10px);
+  border-radius: 10px !important;
+}
+.mapboxgl-popup-close-button{
+  font-size: 30px;
+  color: white;
+  right: 6px !important;
+}
+.popup{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  img{
+    margin-top: 20px;
+    object-fit: cover;
+    height: 150px;
+    width: 100%;
+    border-radius: 5px;
+  }
+  h2{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  p{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  a{
+    width: fit-content;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: white;
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    &:focus{
+      outline: none;
+    }
+  }
+}
