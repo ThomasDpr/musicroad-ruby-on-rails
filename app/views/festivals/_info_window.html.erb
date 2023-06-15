@@ -1,3 +1,6 @@
-<h2><%= festival.name %></h2>
-<p><%= festival.start_date.strftime("%d/%m/%Y") %> - <%= festival.end_date.strftime("%d/%m/%Y") %></p>
-<%= link_to "Voir plus", festival_path(festival) %>
+<div class="popup">
+  <%= cl_image_tag festival.photo.key %>
+  <h2><%= festival.name %></h2>
+  <p><%= l festival.start_date, format: :long %> au <%= l festival.end_date, format: :long %></p>
+  <%= link_to "Voir plus", festival_path(festival) %>
+</div>
