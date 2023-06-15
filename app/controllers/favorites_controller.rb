@@ -20,6 +20,6 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
     flash[:alert] = "#{@favorite.festival.name} a été supprimé de vos favoris ❌"
-    redirect_to festival_path(@favorite.festival), status: :see_other
+    redirect_to request.fullpath, status: :see_other
   end
 end

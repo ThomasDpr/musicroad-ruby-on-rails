@@ -3,7 +3,11 @@
   <%= link_to festivals_path, class: "back-icon" do %>
     <%= svg_tag "icons/back" %>
   <% end %>
-   <%= link_to "Billet de #{@festival.min_price}€ à #{@festival.max_price}€ ", @festival.url, class: "btn-secondary", target: "_blank" %>
+    <% if @festival.min_price == 0 %>
+      <%= link_to "Billet gratuit", @festival.url, class: "btn-secondary", target: "_blank" %>
+    <% else %>
+      <%= link_to "Billet de #{@festival.min_price}€ à #{@festival.max_price}€ ", @festival.url, class: "btn-secondary", target: "_blank" %>
+    <% end %>
 </div>
 
   <div class="festival-show-top">
