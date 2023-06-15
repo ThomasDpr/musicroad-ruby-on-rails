@@ -54,9 +54,6 @@
 
       <!-- Si l'utilisateur est connecté -->
       <% if user_signed_in? %>
-        <%= link_to chatrooms_path, class: "nav-link message" do %>
-          <%= svg_tag "icons/message" %>
-        <% end %>
         <%= link_to favorites_path, class: "nav-link favorite" do %>
           <%= svg_tag "icons/bookmark" %>
         <% end %>

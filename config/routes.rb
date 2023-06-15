@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :favorites, only: %i[index destroy]
 
-  resources :chatrooms, only: %i[index show] do
+  resources :chatrooms, only: %i[show] do
     resources :messages, only: [:create]
   end
 end

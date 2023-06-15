@@ -3,16 +3,21 @@
   <div class="favorite-card">
 
     <% @favorites.each do |favorite| %>
-      <%= link_to festival_path(favorite.festival), class: "fav-card" do %>
+      <%= button_to festival_path(favorite.festival), class: "fav-card", method: :get do %>
         <div class="fav-left">
           <%= cl_image_tag favorite.festival.photo.key %>
+          <%= link_to favorite_path(favorite), data: {turbo_method: :delete}, class: "heart" do %>
+            <%= svg_tag "icons/heart", class: "heart-liked" %>
+          <% end %>
         </div>
 
         <div class="fav-right">
           <div class="separator">
             <div class="top">
               <h1 class="favorite-title-text"><%= favorite.festival.name %></h1>
-              <%= svg_tag "icons/heart", class: "heart-liked" %>
+              <%= link_to chatroom_path(favorite.festival.chatrooms.first), class: "chat-icon" do %>
+                <%= svg_tag "icons/message" %>
+              <% end %>
             </div>
             <div class="middle">
               <h3 class="text-location"><%= favorite.festival.location %></h3>
@@ -20,7 +25,7 @@
           </div>
 
           <div class="bottom">
-            <p class="date-text"><%= l favorite.festival.start_date, format: :long %> - <%= l favorite.festival.end_date, format: :long %></p>
+            <p class="date-text"><%= l favorite.festival.start_date, format: :long %> au <%= l favorite.festival.end_date, format: :long %></p>
           </div>
         </div>
       <% end %>
