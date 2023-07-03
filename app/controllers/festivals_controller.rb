@@ -5,7 +5,8 @@ class FestivalsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @festivals = Festival.all
+    @festivals =
+    Festival.all
 
     # Subquery to match festivals by name or location
     sql_subquery = "name ILIKE :query OR location ILIKE :query"
